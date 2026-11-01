@@ -11,7 +11,6 @@ export default function ModuleSidebar({
 }) {
   if (!sidebarOpen) return null;
 
-  // Group modules by phase
   const phases = CURRICULUM_MODULES.reduce((acc, mod) => {
     if (!acc[mod.phase]) acc[mod.phase] = [];
     acc[mod.phase].push(mod);
@@ -24,7 +23,7 @@ export default function ModuleSidebar({
         {/* Perspective Status Banner */}
         <div className="px-3 py-2.5 rounded border border-zinc-200 bg-white">
           <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-zinc-500">
-            <span>Seçili Mod</span>
+            <span>Active Mode</span>
             <span
               className={`px-1.5 py-0.5 rounded font-semibold ${
                 perspectiveMode === 'examiner'
@@ -32,13 +31,13 @@ export default function ModuleSidebar({
                   : 'bg-emerald-100 text-emerald-900'
               }`}
             >
-              {perspectiveMode === 'examiner' ? 'CEVAP ANAHTARI' : 'ÖĞRENCİ PRATİK'}
+              {perspectiveMode === 'examiner' ? 'EXAMINER KEY' : 'LEARNER'}
             </span>
           </div>
           <p className="mt-1.5 text-xs text-zinc-600 leading-relaxed">
             {perspectiveMode === 'examiner'
-              ? 'Tüm alıştırmaların doğru cevapları ve sınav görevlisi (examiner) puanlama sırları açık.'
-              : '1. adımdan başlayarak sırayla ilerleyin. Her adımda tabloyu nasıl yazacağınızı uygulamalı öğreneceksiniz.'}
+              ? 'All answer keys, examiner penalty ceilings, and grading notes unlocked.'
+              : 'Follow Steps 01 to 11 to select key figures, group paragraphs, and write your report.'}
           </p>
         </div>
 

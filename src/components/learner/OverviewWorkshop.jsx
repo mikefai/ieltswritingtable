@@ -35,17 +35,17 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            5. Adım · Overview (2. Paragraf) Yazma Atölyesi
+            Step 05 · Overview Builder Workshop (Paragraph 2)
           </span>
           <span className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-200/70 text-zinc-800">
-            En Önemli Kural: Overview’da HİÇ SAYI YAZILMAZ!
+            Golden Rule: Zero Raw Numbers in the Overview
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          Sayı Kullanmadan 2 Cümlede Overview Nasıl Yazılır?
+          How to Write a 2-Sentence Overview Without Any Numbers
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          IELTS Task 1’de en çok puan getiren yer <strong>2. Paragraftır (Overview)</strong>. Eğer Overview yazmazsanız puanınız <strong>5.0’ı geçemez</strong>; içine sayı ($14,200 vb.) yazarsanız <strong>6.0’da takılır</strong>. Sadece <strong>2 cümlelik şu formülü</strong> kullanın:
+          Paragraph 2 (the Overview) is the most important paragraph in Task 1. Without a clear Overview, you <strong>cannot score above Band 5.0</strong> in Task Achievement; if you fill it with raw numbers, you cap at <strong>Band 6.0</strong>. Follow this simple 2-sentence formula:
         </p>
       </div>
 
@@ -53,25 +53,25 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="border border-zinc-200 rounded bg-white p-5 space-y-2">
           <div className="font-mono text-xs uppercase text-amber-800 font-semibold">
-            1. Cümle Formülü · En Büyük Kategori + Genel Yön
+            Sentence 1 · Biggest Category + General Direction
           </div>
           <h3 className="font-serif text-lg font-medium text-zinc-900">
-            &ldquo;Overall, [En Büyük] dominated..., whereas [Azalanlar] contracted.&rdquo;
+            &ldquo;Overall, [Biggest] dominated..., whereas [Declining ones] fell.&rdquo;
           </h3>
           <p className="text-xs text-zinc-600 leading-relaxed">
-            Cümleye <strong>&ldquo;Overall,&rdquo;</strong> ile başlayın. Tablodaki en büyük harcamanın hangisi olduğunu (Konut) ve diğer kategorilerin genel olarak azaldığını söyleyin.
+            Start with <strong>&ldquo;Overall,&rdquo;</strong> and state which category was the largest throughout the period, contrasted with the categories that went down.
           </p>
         </div>
 
         <div className="border border-zinc-200 rounded bg-white p-5 space-y-2">
           <div className="font-mono text-xs uppercase text-emerald-800 font-semibold">
-            2. Cümle Formülü · En Hızlı Değişim / Yer Değiştirme
+            Sentence 2 · Biggest Jump or Rank Change
           </div>
           <h3 className="font-serif text-lg font-medium text-zinc-900">
-            &ldquo;Notably, [En Çok Artan] experienced the most dramatic growth...&rdquo;
+            &ldquo;Notably, [Fastest growing] experienced the most dramatic surge...&rdquo;
           </h3>
           <p className="text-xs text-zinc-600 leading-relaxed">
-            İkinci cümleye <strong>&ldquo;Notably,&rdquo;</strong> (Dikkat çekici şekilde,) ile başlayın. Oransal olarak en çok sıçrayan kategoriyi (Dijital) ve Basılı Medya’yı geçtiğini belirtin.
+            Start with <strong>&ldquo;Notably,&rdquo;</strong> and highlight the category that grew the fastest proportionally (Digital) and swapped ranks with Print Media.
           </p>
         </div>
       </div>
@@ -81,10 +81,10 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
         <div className="flex items-center justify-between flex-wrap gap-2 border-b border-zinc-200 pb-4">
           <div>
             <h3 className="font-serif text-lg font-medium text-zinc-900">
-              Uygulama: Doğru Overview Cümlelerini Seçin
+              Interactive Builder: Assemble Your 2-Sentence Overview
             </h3>
             <p className="text-xs text-zinc-600 mt-0.5">
-              1. Cümle ve 2. Cümle için aşağıdaki seçeneklerden <strong>sayı içermeyen ve net bilgi veren</strong> Band 8.5 cümlesini seçin:
+              Choose one option for Sentence 1 and one for Sentence 2. Avoid options that contain raw dollar figures or vague statements!
             </p>
           </div>
           <button
@@ -96,7 +96,7 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono bg-zinc-900 text-white hover:bg-zinc-800"
           >
             <KeyRound className="w-3.5 h-3.5" />
-            <span>8.5 Puanlık İkiliyi Seç</span>
+            <span>Select Band 8.5 Pair</span>
           </button>
         </div>
 
@@ -193,7 +193,7 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
           <div className="p-4 rounded bg-zinc-50 border border-zinc-300 space-y-2">
             <div className="flex items-center justify-between font-mono text-xs">
               <span className="uppercase tracking-wider text-zinc-600 font-semibold">
-                Oluşturduğunuz 2. Paragraf (Overview):
+                Your Assembled Paragraph 2 (Overview):
               </span>
               <span
                 className={`px-2 py-0.5 rounded font-semibold ${
@@ -203,8 +203,8 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
                 }`}
               >
                 {s1Obj.quality === 'band8' && s2Obj.quality === 'band8'
-                  ? 'Kusursuz 8.5 Puanlık Overview (0 Sayı!)'
-                  : 'Hatalı Seçim Var — Yukarıdaki Uyarıya Bakın'}
+                  ? 'Band 8.5 Overview Verified (0 Numbers!)'
+                  : 'Contains Trap — Revise Choice Above'}
               </span>
             </div>
             <p className="font-serif text-base text-zinc-900 leading-relaxed">
@@ -213,14 +213,14 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
           </div>
         )}
 
-        {/* Optional Free-Draft Zero-Number Guardrail Sandbox */}
+        {/* Free-Draft Zero-Number Guardrail Sandbox */}
         <div className="pt-4 border-t border-zinc-200 space-y-2">
           <div className="flex items-center justify-between flex-wrap gap-2">
             <label
               htmlFor="overview-sandbox"
               className="font-mono text-xs uppercase tracking-wider text-zinc-600 font-semibold"
             >
-              Deneme Alanı: Kendi 2 Cümlelik Overview Paragrafınızı Yazıp Test Edin
+              Practice Box: Try Writing Your Own 2-Sentence Overview
             </label>
             <span
               className={`font-mono text-xs px-2 py-0.5 rounded ${
@@ -229,7 +229,7 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
                   : 'bg-zinc-100 text-zinc-600'
               }`}
             >
-              Tespit Edilen Sayı: {dataNumbersInDraft.length} (Hedef: 0)
+              Numbers Detected: {dataNumbersInDraft.length} (Target: 0)
             </span>
           </div>
           <textarea
@@ -242,7 +242,7 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
           />
           {dataNumbersInDraft.length > 0 && (
             <p className="text-xs text-rose-800 font-mono">
-              Uyarı: Overview içinde sayı ({dataNumbersInDraft.join(', ')}) kullandınız! Bu sayıları silip &ldquo;the largest share&rdquo; veya &ldquo;surged dramatically&rdquo; gibi sözel ifadeler yazın.
+              Examiner Alert: Remove raw figures ({dataNumbersInDraft.join(', ')}) from your Overview! Save exact numbers for Body Paragraphs 1 &amp; 2.
             </p>
           )}
         </div>
@@ -251,7 +251,7 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
       {/* Side-by-Side Benchmark Comparison: Band 5 vs Band 6.5 vs Band 8.5 */}
       <div className="space-y-3">
         <h3 className="font-serif text-xl font-medium text-zinc-900">
-          Karşılaştırma: 5.0 Puan vs. 6.5 Puan vs. 8.5 Puan Overview
+          Compare: Band 5.0 vs. Band 6.5 vs. Band 8.5 Overviews
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {OVERVIEW_BENCHMARKS.map((bm) => (
@@ -298,7 +298,7 @@ export default function OverviewWorkshop({ perspectiveMode, onMarkComplete }) {
           onClick={() => onMarkComplete('m5-overview-workshop')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Overview Yazımını Öğrendim, 5 Cümle Kalıbına Geç →
+          Continue to Step 06: 5 Sentence Templates →
         </button>
       </div>
     </section>

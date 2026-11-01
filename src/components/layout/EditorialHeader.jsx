@@ -23,7 +23,7 @@ export default function EditorialHeader({
             type="button"
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-1.5 rounded text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/60 transition-colors"
-            title={sidebarOpen ? 'Menüyü Gizle' : 'Adım Menüsünü Aç'}
+            title={sidebarOpen ? 'Hide steps sidebar' : 'Show steps sidebar'}
             aria-label="Toggle curriculum index"
           >
             {sidebarOpen ? (
@@ -38,10 +38,10 @@ export default function EditorialHeader({
               IELTS Task 1
             </span>
             <h1 className="font-serif text-base sm:text-lg font-medium text-zinc-900 truncate">
-              Tablo (Table) Yazma Rehberi
+              Interpreting &amp; Reporting Tables
             </h1>
             <span className="hidden lg:inline-block text-xs text-zinc-500 border-l border-zinc-300 pl-2.5">
-              Adım Adım 4 Paragraf Şablonu &amp; Uygulama
+              Step-by-Step Essay Builder &amp; Examiner Guide
             </span>
           </div>
         </div>
@@ -49,7 +49,7 @@ export default function EditorialHeader({
         {/* Center: Quiet Step Progress */}
         <div className="hidden md:flex items-center gap-3 text-xs text-zinc-500">
           <span className="font-mono tabular-nums">
-            Adım {String(activeModuleIndex + 1).padStart(2, '0')}/{String(totalModules).padStart(2, '0')}
+            Step {String(activeModuleIndex + 1).padStart(2, '0')}/{String(totalModules).padStart(2, '0')}
           </span>
           <div className="w-24 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
             <div
@@ -59,7 +59,7 @@ export default function EditorialHeader({
           </div>
           {completedModulesCount > 0 && (
             <span className="font-mono text-[11px] text-emerald-900 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
-              {completedModulesCount} Adım Tamamlandı
+              {completedModulesCount} Completed
             </span>
           )}
         </div>
@@ -73,17 +73,17 @@ export default function EditorialHeader({
               setDisplayMode(displayMode === 'StepFocus' ? 'Continuous' : 'StepFocus')
             }
             className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-zinc-900 bg-white border border-zinc-200 rounded transition-colors"
-            title="Tek adım görünümü veya tüm sayfayı alt alta görme modu"
+            title="Switch between step-by-step focus view and full page view"
           >
             {displayMode === 'StepFocus' ? (
               <>
                 <FileText className="w-3.5 h-3.5 text-zinc-500" />
-                <span>Adım Adım Görünüm</span>
+                <span>Step View</span>
               </>
             ) : (
               <>
                 <Layers className="w-3.5 h-3.5 text-zinc-500" />
-                <span>Tüm Adımlar Alt Alta</span>
+                <span>All Steps</span>
               </>
             )}
           </button>
@@ -104,7 +104,7 @@ export default function EditorialHeader({
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Öğrenci Modu (Pratik)</span>
+              <span>Learner Mode</span>
             </button>
             <button
               type="button"
@@ -116,7 +116,7 @@ export default function EditorialHeader({
               }`}
             >
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Cevap Anahtarı / Hoca Modu</span>
+              <span>Examiner Key</span>
             </button>
           </div>
         </div>

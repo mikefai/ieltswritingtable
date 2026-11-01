@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, ChevronUp, FileText, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { HelpCircle, ChevronDown, ChevronUp, FileText, Globe } from 'lucide-react';
 import { FOUR_PARAGRAPH_BLUEPRINT } from '../../data/datasets';
 
 export default function EssayBlueprintBanner({ onJumpToModule }) {
   const [isOpen, setIsOpen] = useState(true);
   const [activePara, setActivePara] = useState(1);
+  const [showTrTips, setShowTrTips] = useState(false);
 
   const currentBlueprint =
     FOUR_PARAGRAPH_BLUEPRINT.find((p) => p.paragraphNumber === activePara) ||
@@ -21,10 +22,10 @@ export default function EssayBlueprintBanner({ onJumpToModule }) {
           <HelpCircle className="w-4 h-4 text-amber-300 shrink-0" />
           <div>
             <span className="font-mono text-xs uppercase tracking-wider text-amber-300 font-semibold mr-2">
-              Başlangıç Rehberi:
+              Quick-Start Guide:
             </span>
             <span className="font-serif text-sm sm:text-base font-medium">
-              Bu Site Ne İşe Yarar &amp; Sıfırdan 4 Paragrafta Tablo Yazısı Nasıl Yazılır?
+              How to Write a Band 8+ Table Essay in 4 Simple Paragraphs
             </span>
           </div>
         </div>
@@ -32,48 +33,48 @@ export default function EssayBlueprintBanner({ onJumpToModule }) {
           type="button"
           className="inline-flex items-center gap-1 font-mono text-xs text-zinc-300 hover:text-white shrink-0"
         >
-          <span>{isOpen ? 'Rehberi Küçült' : '4 Paragraf Şablonunu Aç'}</span>
+          <span>{isOpen ? 'Hide Guide' : 'Open 4-Paragraph Formula'}</span>
           {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
         </button>
       </div>
 
       {isOpen && (
         <div className="p-5 sm:p-6 space-y-6 bg-[#FAFAF9]">
-          {/* Plain-Turkish Product Purpose Box */}
+          {/* Plain-English Product Purpose Box */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 rounded bg-white border border-zinc-200 space-y-1.5">
               <div className="font-mono text-[11px] uppercase text-zinc-500 font-semibold">
-                1. Sınavda Ne İsteniyor?
+                1. What Is Your Goal?
               </div>
               <h3 className="font-serif text-base font-medium text-zinc-900">
-                20 Dakikada 150+ Kelime Rapor
+                Write a 150+ Word Report in 20 Mins
               </h3>
               <p className="text-xs text-zinc-600 leading-relaxed">
-                IELTS Writing Task 1’de karşınıza sayılarla dolu bir tablo çıkar. Sizden kendi fikrinizi yazmanız <strong>istenmez</strong>; sadece tablodaki en önemli sayıları seçip <strong>4 paragraflık bir özet</strong> yazmanız istenir.
+                In IELTS Writing Task 1, you must summarize a data table in <strong>4 short paragraphs (about 9–10 sentences total)</strong>. Do not give personal opinions—just select and compare the main numbers.
               </p>
             </div>
 
             <div className="p-4 rounded bg-white border border-zinc-200 space-y-1.5">
               <div className="font-mono text-[11px] uppercase text-rose-800 font-semibold">
-                2. Öğrenciler Neden 5.5 Alıyor?
+                2. Why Do Students Get Band 5.5?
               </div>
               <h3 className="font-serif text-base font-medium text-zinc-900">
-                Tüm Sayıları Tek Tek Yazmak!
+                Writing Every Number in the Table
               </h3>
               <p className="text-xs text-zinc-600 leading-relaxed">
-                Tablodaki 15 sayıyı sırayla (<em>&ldquo;2005’te şuydu, 2015’te bu oldu&rdquo;</em>) yazarsanız veya 2. paragrafa (Overview) sayı doldurursanız puanınız <strong>5.5–6.0’da kilitlenir</strong>.
+                If a table has 15 numbers and you write all 15 in order (or put numbers inside your Overview paragraph), your Task Achievement score is <strong>capped at Band 5.5 / 6.0</strong>.
               </p>
             </div>
 
             <div className="p-4 rounded bg-white border border-zinc-200 space-y-1.5">
               <div className="font-mono text-[11px] uppercase text-emerald-800 font-semibold">
-                3. Bu Uygulama Nasıl Öğretiyor?
+                3. How to Use This Tool
               </div>
               <h3 className="font-serif text-base font-medium text-zinc-900">
-                Adım Adım Seç, Grupla ve Yaz
+                Select, Group &amp; Use Templates
               </h3>
               <p className="text-xs text-zinc-600 leading-relaxed">
-                Sol menüdeki adımlarla önce <strong>hangi 7-8 sayıyı seçeceğinizi</strong>, sonra <strong>hazır İngilizce cümle kalıplarını</strong> öğrenir ve en sonda gerçek 8.5 puanlık yazıyı incelersiniz.
+                Follow the 11 steps on the left to practice picking the <strong>7–8 key numbers</strong>, grouping rows into <strong>2 body paragraphs</strong>, and writing with ready-made sentence templates.
               </p>
             </div>
           </div>
@@ -83,20 +84,32 @@ export default function EssayBlueprintBanner({ onJumpToModule }) {
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-200 pb-3">
               <div>
                 <h4 className="font-serif text-lg font-medium text-zinc-900">
-                  IELTS Tablo Yazısının 4 Paragraflık İskeleti (Toplam 9 Cümle = ~170 Kelime)
+                  The 4-Paragraph Essay Blueprint (Click each paragraph to see the template)
                 </h4>
                 <p className="text-xs text-zinc-600">
-                  Her bir paragrafa tıklayarak o paragrafta ne yazacağınızı ve hazır boşluk doldurma kalıbını görün:
+                  Every IELTS Table essay follows this exact 4-paragraph structure:
                 </p>
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowTrTips(!showTrTips)}
+                  className={`inline-flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono border transition-colors ${
+                    showTrTips
+                      ? 'bg-amber-100 text-amber-950 border-amber-300 font-semibold'
+                      : 'bg-white text-zinc-600 border-zinc-200 hover:text-zinc-900'
+                  }`}
+                >
+                  <Globe className="w-3.5 h-3.5" />
+                  <span>{showTrTips ? 'TR İpucu: Açık' : 'TR İpucu Göster'}</span>
+                </button>
                 <button
                   type="button"
                   onClick={() => onJumpToModule('m8-model-answer')}
                   className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono bg-zinc-100 hover:bg-zinc-200 text-zinc-800 border border-zinc-300"
                 >
                   <FileText className="w-3.5 h-3.5" />
-                  <span>Tam Örnek Yazıyı Gör (Adım 08)</span>
+                  <span>See Full Model Essay (Step 08)</span>
                 </button>
               </div>
             </div>
@@ -133,44 +146,38 @@ export default function EssayBlueprintBanner({ onJumpToModule }) {
 
             {/* Selected Paragraph Recipe Details */}
             <div className="p-4 rounded bg-zinc-50 border border-zinc-200 space-y-4">
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 <div className="font-mono text-xs uppercase text-zinc-900 font-semibold">
-                  {currentBlueprint.title} — Bu Paragrafta Ne Yapmalıyım?
+                  {currentBlueprint.title} — What to Write:
                 </div>
                 <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed">
-                  {currentBlueprint.whatToDoTR}
+                  {currentBlueprint.whatToDoEN}
                 </p>
+                {showTrTips && (
+                  <p className="text-xs text-amber-950 bg-amber-50/80 border border-amber-200 px-3 py-1.5 rounded font-medium">
+                    {currentBlueprint.trHint}
+                  </p>
+                )}
               </div>
 
               {/* Fill in the blank template */}
               <div className="p-3.5 rounded bg-zinc-900 text-zinc-100 space-y-1">
                 <div className="font-mono text-[11px] uppercase tracking-wider text-amber-300">
-                  Hazır Cümle Kalıbı (Boşlukları Doldur):
+                  Fill-in-the-Blank Sentence Template:
                 </div>
                 <p className="font-mono text-xs sm:text-sm leading-relaxed">
                   {currentBlueprint.template}
                 </p>
               </div>
 
-              {/* Real Band 8.5 Example + Turkish Translation */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div className="p-3 rounded bg-white border border-zinc-200 space-y-1">
-                  <div className="font-mono text-[11px] uppercase text-emerald-800 font-semibold">
-                    Gerçek 8.5 Puanlık İngilizce Örnek:
-                  </div>
-                  <p className="font-serif text-sm text-zinc-900 italic leading-relaxed">
-                    &ldquo;{currentBlueprint.exampleEN}&rdquo;
-                  </p>
+              {/* Real Band 8.5 Example */}
+              <div className="p-3 rounded bg-white border border-zinc-200 space-y-1">
+                <div className="font-mono text-[11px] uppercase text-emerald-800 font-semibold">
+                  Band 8.5 Completed Example:
                 </div>
-
-                <div className="p-3 rounded bg-white border border-zinc-200 space-y-1">
-                  <div className="font-mono text-[11px] uppercase text-zinc-500 font-semibold">
-                    Türkçe Anlamı:
-                  </div>
-                  <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed">
-                    &ldquo;{currentBlueprint.exampleTR}&rdquo;
-                  </p>
-                </div>
+                <p className="font-serif text-sm sm:text-base text-zinc-900 italic leading-relaxed">
+                  &ldquo;{currentBlueprint.exampleEN}&rdquo;
+                </p>
               </div>
             </div>
           </div>

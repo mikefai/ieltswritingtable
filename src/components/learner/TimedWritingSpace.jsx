@@ -34,23 +34,23 @@ const DYNAMIC_TREND_VERBS = [
 const STARTER_TEMPLATES = {
   dynamic: `The table compares how much households in a European nation spent annually on five categories of goods and services in 2005, 2015, and 2025.
 
-Overall, housing and utilities accounted for by far the largest expense throughout the period, whereas spending on [azalan 3 kategoriyi yazın] declined. Notably, [en çok sıçrayan kategoriyi yazın] experienced the most dramatic growth, overtaking print media.
+Overall, housing and utilities accounted for by far the largest expense throughout the period, whereas spending on [name the 3 declining categories] declined. Notably, [name the fastest-growing category] experienced the most dramatic growth, overtaking print media.
 
-Regarding major living costs, expenditure on housing rose by just over half from $[2005 sayısı] in 2005 to $[2025 sayısı] in 2025. Conversely, outlays on food fell gradually from $[2005 sayısı] to $[2025 sayısı]. Meanwhile, transport peaked at $[2015 zirvesi] in 2015 before dropping to $[2025 sayısı] by 2025.
+Regarding major living costs, expenditure on housing rose by just over half from $[2005 figure] in 2005 to $[2025 figure] in 2025. Conversely, outlays on food fell gradually from $[2005 figure] to $[2025 figure]. Meanwhile, transport peaked at $[2015 peak] in 2015 before dropping to $[2025 figure] by 2025.
 
-In stark contrast, the two smallest categories moved in opposite directions. In 2005, households spent $1,800 and $1,200 on print media and digital telecoms, respectively. By 2025, digital spending grew nearly fivefold to reach $[2025 sayısı], whereas print media shrank to a mere sixth of its initial level, finishing at $[2025 sayısı].`,
+In stark contrast, the two smallest categories moved in opposite directions. In 2005, households spent $1,800 and $1,200 on print media and digital telecoms, respectively. By 2025, digital spending grew nearly fivefold to reach $[2025 figure], whereas print media shrank to a mere sixth of its initial level, finishing at $[2025 figure].`,
 
   static: `The table compares the percentage of commuters using four modes of transport across five metropolitan cities in 2024, alongside average daily journey durations.
 
 Overall, private cars and rail networks represented the primary commuting methods depending on the city, whereas bus usage remained comparatively low everywhere. Notably, Amsterdam stood out with the highest reliance on active transport and the shortest average commute.
 
-Regarding public and active transit leaders, rail commuters accounted for the largest share in Tokyo at [Tokyo metro %]%, followed by London at [Londra metro %]%, although these two cities also recorded the longest commutes at [Tokyo dk] and [Londra dk] minutes, respectively. Meanwhile, cycling and walking represented nearly half of all journeys in Amsterdam ([Amsterdam bisiklet %]%), where commuters enjoyed the shortest travel time ([Amsterdam dk] minutes).
+Regarding public and active transit leaders, rail commuters accounted for the largest share in Tokyo at [Tokyo rail %]%, followed by London at [London rail %]%, although these two cities also recorded the longest commutes at [Tokyo mins] and [London mins] minutes, respectively. Meanwhile, cycling and walking represented nearly half of all journeys in Amsterdam ([Amsterdam active %]%), where commuters enjoyed the shortest travel time ([Amsterdam mins] minutes).
 
-In stark contrast, commuters in Houston and Sydney relied heavily on private cars, which accounted for [Houston araba %]% and [Sydney araba %]% of journeys, respectively. Conversely, rail and active transport in Houston were negligible, standing at just [Houston metro %]% and [Houston bisiklet %]%.`,
+In stark contrast, commuters in Houston and Sydney relied heavily on private cars, which accounted for [Houston car %]% and [Sydney car %]% of journeys, respectively. Conversely, rail and active transport in Houston were negligible, standing at just [Houston rail %]% and [Houston active %]%.`,
 };
 
 export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
-  const [promptMode, setPromptMode] = useState('dynamic'); // Default to the familiar dynamic table first!
+  const [promptMode, setPromptMode] = useState('dynamic');
   const [secondsLeft, setSecondsLeft] = useState(20 * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [essayText, setEssayText] = useState('');
@@ -81,25 +81,25 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
   const getActivePhase = () => {
     if (elapsedMinutes < 3) {
       return {
-        stage: '1. Aşama (Dk 0–3): Sayıları Seç',
-        advice: 'Tablo başlığındaki birime dikkat et ve yazacağın 7–8 sayıyı belirle.',
+        stage: 'Stage 1 (Mins 0–3): Check Units & Pick 7–8 Numbers',
+        advice: 'Check the header unit and pick your key figures before writing.',
       };
     }
     if (elapsedMinutes < 5) {
       return {
-        stage: '2. Aşama (Dk 3–5): 2 Gruba Ayır',
-        advice: '3. ve 4. paragrafta hangi satırları anlatacağını sol not kutusuna yaz.',
+        stage: 'Stage 2 (Mins 3–5): Group into Body 1 & Body 2',
+        advice: 'Note which rows go into Body Paragraph 1 vs. Body Paragraph 2.',
       };
     }
     if (elapsedMinutes < 18) {
       return {
-        stage: '3. Aşama (Dk 5–18): 4 Paragrafı Yaz',
-        advice: 'Boşluklu şablonu kullanarak 4 paragrafı tamamla.',
+        stage: 'Stage 3 (Mins 5–18): Write 4 Paragraphs',
+        advice: 'Draft Introduction, zero-number Overview, Body 1, and Body 2.',
       };
     }
     return {
-      stage: '4. Aşama (Dk 18–20): Son Kontrol',
-      advice: 'Overview’da sayı var mı? Birimler doğru mu ($14,200)?',
+      stage: 'Stage 4 (Mins 18–20): Final Audit',
+      advice: 'Verify zero numbers in Overview and accurate units ($14,200).',
     };
   };
 
@@ -138,7 +138,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
   };
 
   const handleCopyDraft = () => {
-    const auditHeader = `--- IELTS Task 1 Table Practice (${wordCount} kelime | ${dataFiguresCited.length} sayı kullanıldı) ---\n\n`;
+    const auditHeader = `--- IELTS Task 1 Table Practice (${wordCount} words | ${dataFiguresCited.length} figures cited) ---\n\n`;
     navigator.clipboard.writeText(auditHeader + essayText);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -150,7 +150,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            10. Adım · Adım Adım Yazma Simülatörü
+            Step 10 · Guided 20-Minute Writing Simulator
           </span>
           <div className="inline-flex items-center p-0.5 rounded bg-zinc-200/80 border border-zinc-300 text-xs">
             <button
@@ -162,7 +162,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
                   : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
-              1. Görev: Zamanlı Tablo (2005–2025 Harcamalar)
+              Task A: Dynamic Table (2005–2025 Spending)
             </button>
             <button
               type="button"
@@ -173,15 +173,15 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
                   : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
-              2. Görev: Sabit Tablo (2024 Şehir Ulaşımı)
+              Task B: Static Table (2024 City Commuters)
             </button>
           </div>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          Şimdi Sıra Sizde: 4 Paragraflık Yazınızı Yazın
+          Write Your 4-Paragraph Table Report
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          Nasıl başlayacağınızdan emin değilseniz yazı kutusunun üstündeki <strong>&ldquo;4 Paragraf Hazır İskeletini Ekle&rdquo;</strong> butonuna tıklayın! Köşeli parantez içindeki <code>[boşlukları]</code> tablodaki sayılarla doldurarak hemen ilk kompozisyonunuzu tamamlayın.
+          If you are not sure how to start, click <strong>&ldquo;Insert 4-Paragraph Starter Template&rdquo;</strong> above the writing box and replace the <code>[bracketed placeholders]</code> with the key figures from the table.
         </p>
       </div>
 
@@ -200,12 +200,12 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
               {isRunning ? (
                 <>
                   <Pause className="w-3.5 h-3.5" />
-                  <span>Duraklat</span>
+                  <span>Pause</span>
                 </>
               ) : (
                 <>
                   <Play className="w-3.5 h-3.5" />
-                  <span>20:00 Başlat</span>
+                  <span>Start 20:00</span>
                 </>
               )}
             </button>
@@ -218,7 +218,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
               className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded text-xs font-mono text-zinc-600 hover:text-zinc-900 border border-zinc-200"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              <span>Sıfırla</span>
+              <span>Reset</span>
             </button>
           </div>
         </div>
@@ -236,13 +236,13 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
         <div className="border border-zinc-300 rounded bg-white overflow-hidden">
           <div className="p-4 bg-zinc-50 border-b border-zinc-200 space-y-1">
             <div className="font-mono text-[11px] uppercase tracking-wider text-rose-800 font-semibold">
-              Sabit (Static) Tablo Görevi · Yıl Değişimi Yok (rose/fell Yasak!)
+              Static Snapshot Task · Single Year (2024) — Do NOT use &ldquo;rose / fell&rdquo;
             </div>
             <p className="font-serif text-base font-medium text-zinc-900">
               {STATIC_SNAPSHOT_DATASET.promptRubric}
             </p>
-            <p className="text-xs text-zinc-600">
-              <strong>Türkçesi:</strong> {STATIC_SNAPSHOT_DATASET.promptRubricTR}
+            <p className="text-xs text-zinc-600 italic">
+              {STATIC_SNAPSHOT_DATASET.taskInstruction}
             </p>
           </div>
 
@@ -269,19 +269,19 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
                       {row.city}
                     </td>
                     <td className="py-2.5 px-4 text-right font-mono tabular-nums border-r border-zinc-200">
-                      %{row.rail}
+                      {row.rail}%
                     </td>
                     <td className="py-2.5 px-4 text-right font-mono tabular-nums border-r border-zinc-200">
-                      %{row.car}
+                      {row.car}%
                     </td>
                     <td className="py-2.5 px-4 text-right font-mono tabular-nums border-r border-zinc-200">
-                      %{row.bus}
+                      {row.bus}%
                     </td>
                     <td className="py-2.5 px-4 text-right font-mono tabular-nums border-r border-zinc-200">
-                      %{row.active}
+                      {row.active}%
                     </td>
                     <td className="py-2.5 px-4 text-right font-mono tabular-nums bg-zinc-50 font-medium">
-                      {row.duration} dk
+                      {row.duration} mins
                     </td>
                   </tr>
                 ))}
@@ -292,13 +292,13 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
       ) : (
         <div className="border border-zinc-300 rounded bg-white p-4 space-y-2">
           <div className="font-mono text-xs uppercase text-rose-800 font-semibold">
-            Zamanlı Tablo Görevi · {PRIMARY_TABLE_DATASET.unitHeader}
+            Dynamic Table Task · {PRIMARY_TABLE_DATASET.unitHeader}
           </div>
           <p className="font-serif text-base text-zinc-900 font-medium">
             {PRIMARY_TABLE_DATASET.promptRubric}
           </p>
           <div className="p-2.5 rounded bg-zinc-50 border border-zinc-200 font-mono text-xs text-zinc-800">
-            <strong>Hızlı Tablo Özeti (Bin $):</strong> Housing: 14.2 ($14,200) → 16.8 → 21.5 ($21,500) | Food: 9.4 ($9,400) → 8.9 → 8.1 ($8,100) | Transport: 7.6 ($7,600) → 8.5 ($8,500 zirve!) → 6.2 ($6,200) | Digital: 1.2 ($1,200) → 2.9 → 5.8 ($5,800) | Print: 1.8 ($1,800) → 0.9 → 0.3 ($300)
+            <strong>Quick Data Reference (in US$ thousands):</strong> Housing: 14.2 ($14,200) → 16.8 → 21.5 ($21,500) | Food: 9.4 ($9,400) → 8.9 → 8.1 ($8,100) | Transport: 7.6 ($7,600) → 8.5 ($8,500 peak!) → 6.2 ($6,200) | Digital: 1.2 ($1,200) → 2.9 → 5.8 ($5,800) | Print: 1.8 ($1,800) → 0.9 → 0.3 ($300)
           </div>
         </div>
       )}
@@ -312,14 +312,14 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
               htmlFor="prewriting-notes"
               className="font-mono text-xs uppercase tracking-wider text-zinc-700 font-semibold block"
             >
-              1. Planlama Notlarım (Seçtiğim Sayılar)
+              5-Minute Planning Scratchpad
             </label>
             <textarea
               id="prewriting-notes"
               rows={5}
               value={scratchpadNotes}
               onChange={(e) => setScratchpadNotes(e.target.value)}
-              placeholder="Örn:\n2. Paragraf (Overview): En büyük Konut, en hızlı artan Dijital.\n3. Paragraf (Büyükler): Konut ($14,200 -> $21,500), Gıda ($9,400 -> $8,100), Ulaşım 2015 zirvesi ($8,500).\n4. Paragraf (Küçükler): Dijital 5 kat ($1,200 -> $5,800) vs Basılı 1/6 ($1,800 -> $300)."
+              placeholder="e.g.&#10;Overview: Housing largest; Digital fastest growth.&#10;Body 1 (Large): Housing ($14,200 -> $21,500), Food ($9,400 -> $8,100), Transport 2015 peak ($8,500).&#10;Body 2 (Small): Digital 5x ($1,200 -> $5,800) vs Print 1/6th ($1,800 -> $300)."
               className="w-full rounded border border-zinc-200 bg-zinc-50 p-2.5 font-mono text-xs text-zinc-800 focus:outline-none focus:border-zinc-900"
             />
           </div>
@@ -328,12 +328,12 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
           <div className="border-2 border-zinc-900 rounded bg-white p-4 space-y-3">
             <div className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-zinc-900 font-semibold border-b border-zinc-200 pb-2">
               <ShieldCheck className="w-4 h-4 text-zinc-900" />
-              <span>Canlı Yazı Kontrolü (Otomatik)</span>
+              <span>Live Self-Audit Check</span>
             </div>
 
             <div className="space-y-2 font-mono text-xs">
               <div className="flex items-center justify-between">
-                <span className="text-zinc-600">Kelime Sayısı (En az 150):</span>
+                <span className="text-zinc-600">Word Count (Min 150):</span>
                 <span
                   className={`font-semibold px-1.5 py-0.5 rounded ${
                     wordCount >= 150 && wordCount <= 200
@@ -343,12 +343,12 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
                       : 'bg-zinc-100 text-zinc-800'
                   }`}
                 >
-                  {wordCount} kelime
+                  {wordCount} words
                 </span>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-zinc-600">Paragraf Sayısı (Hedef 4):</span>
+                <span className="text-zinc-600">Paragraphs (Target 4):</span>
                 <span
                   className={`font-semibold px-1.5 py-0.5 rounded ${
                     paragraphCount === 4
@@ -356,12 +356,12 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
                       : 'bg-zinc-100 text-zinc-800'
                   }`}
                 >
-                  {paragraphCount} paragraf
+                  {paragraphCount}
                 </span>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-zinc-600">Yazılan Sayı Adedi (Hedef 6–9):</span>
+                <span className="text-zinc-600">Data Figures Cited (Target 6–9):</span>
                 <span
                   className={`font-semibold px-1.5 py-0.5 rounded ${
                     dataFiguresCited.length > 11
@@ -371,7 +371,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
                       : 'bg-zinc-100 text-zinc-800'
                   }`}
                 >
-                  {dataFiguresCited.length} sayı
+                  {dataFiguresCited.length} figures
                 </span>
               </div>
             </div>
@@ -381,7 +381,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
               <div className="p-2.5 rounded bg-rose-50 border border-rose-200 text-xs text-rose-900 flex items-start gap-2">
                 <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Çok Fazla Sayı Yazdınız ({dataFiguresCited.length} sayı):</strong> 2015 ara yıllarını silerek sayı adedini 7–9 arasına indirin!
+                  <strong>Too Many Numbers ({dataFiguresCited.length} cited):</strong> Remove straight-line 2015 midpoints to stay within 6–9 figures.
                 </span>
               </div>
             )}
@@ -390,7 +390,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
               <div className="p-2.5 rounded bg-amber-50 border border-amber-200 text-xs text-amber-950 flex items-start gap-2">
                 <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Overview Uyarısı:</strong> 2. paragrafınızda sayı ({overviewNumbers.join(', ')}) var! Overview paragrafından sayıları silin.
+                  <strong>Overview Alert:</strong> Paragraph 2 contains raw numbers ({overviewNumbers.join(', ')}). Keep exact numbers in Body Paragraphs 1 &amp; 2.
                 </span>
               </div>
             )}
@@ -399,7 +399,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
               <div className="p-2.5 rounded bg-rose-50 border border-rose-300 text-xs text-rose-950 flex items-start gap-2">
                 <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Sabit Tablo Hatası:</strong> Bu tabloda yıllar yok ama yazınızda değişim fiili (<em>{detectedTrendVerbs.join(', ')}</em>) kullandınız!
+                  <strong>Static Table Verb Alert:</strong> This 2024 table has no time trend, yet you wrote change verbs (<em>{detectedTrendVerbs.join(', ')}</em>).
                 </span>
               </div>
             )}
@@ -415,7 +415,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm"
             >
               <Wand2 className="w-3.5 h-3.5 text-amber-300" />
-              <span>4 Paragraf Hazır İskeletini Yazı Alanına Ekle (Boşluk Doldurmalı)</span>
+              <span>Insert 4-Paragraph Starter Template</span>
             </button>
 
             <button
@@ -425,7 +425,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono bg-zinc-100 hover:bg-zinc-200 text-zinc-800 border border-zinc-300 disabled:opacity-40"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-700" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copied ? 'Kopyalandı' : 'Yazımı Kopyala'}</span>
+              <span>{copied ? 'Copied' : 'Copy Essay'}</span>
             </button>
           </div>
 
@@ -433,7 +433,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
             rows={16}
             value={essayText}
             onChange={(e) => setEssayText(e.target.value)}
-            placeholder="Nasıl başlayacağınızı bilmiyorsanız yukarıdaki siyah '4 Paragraf Hazır İskeletini Ekle' butonuna tıklayın!&#10;&#10;1. Paragraf (Giriş - 1 cümle): The table compares...&#10;&#10;2. Paragraf (Overview - 2 cümle, SIFIR SAYI): Overall, ... Notably, ...&#10;&#10;3. Paragraf (Detay 1 - Büyük Kategoriler): Regarding major living costs, ...&#10;&#10;4. Paragraf (Detay 2 - Küçük/Zıt Kategoriler): In stark contrast, ..."
+            placeholder="Need help starting? Click 'Insert 4-Paragraph Starter Template' above!&#10;&#10;Paragraph 1 (Introduction): The table compares...&#10;&#10;Paragraph 2 (Overview — Zero Numbers): Overall, ... Notably, ...&#10;&#10;Paragraph 3 (Body Paragraph 1 — Large Categories): Regarding major living costs, ...&#10;&#10;Paragraph 4 (Body Paragraph 2 — Small/Opposite Categories): In stark contrast, ..."
             className="w-full rounded border border-zinc-200 bg-[#FAFAF9] p-4 font-serif text-base text-zinc-900 leading-8 focus:outline-none focus:border-zinc-900 resize-y"
           />
         </div>
@@ -445,7 +445,7 @@ export default function TimedWritingSpace({ perspectiveMode, onMarkComplete }) {
           onClick={() => onMarkComplete('m10-timed-simulator')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Yazımı Tamamladım, Son Puan Kontrol Listesine Geç →
+          Continue to Step 11: Final Score Checklist →
         </button>
       </div>
     </section>

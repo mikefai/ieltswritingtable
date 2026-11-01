@@ -152,7 +152,7 @@ export default function App() {
                     >
                       <ChevronLeft className="w-4 h-4" />
                       <span>
-                        Önceki: {prevModule.number} · {prevModule.shortTitle}
+                        Prev: {prevModule.number} · {prevModule.shortTitle}
                       </span>
                     </button>
                   ) : (
@@ -166,7 +166,7 @@ export default function App() {
                       className="inline-flex items-center gap-2 text-xs font-mono text-zinc-600 hover:text-zinc-900 transition-colors"
                     >
                       <span>
-                        Sonraki: {nextModule.number} · {nextModule.shortTitle}
+                        Next: {nextModule.number} · {nextModule.shortTitle}
                       </span>
                       <ChevronRight className="w-4 h-4" />
                     </button>

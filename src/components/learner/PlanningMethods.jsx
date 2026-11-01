@@ -5,23 +5,23 @@ import { PLANNING_METHODS_DATA } from '../../data/bandCriteria';
 const PRE_WRITING_CHECKLIST = [
   {
     id: 'pw-1',
-    text: '1. Tablonun başlığındaki birimi ("in thousands" = bin dolar veya "%") yuvarlağa aldım.',
+    text: '1. I checked the table header for unit multipliers (e.g., "in thousands", "% vs. minutes").',
   },
   {
     id: 'pw-2',
-    text: '2. Tabloda yıllar var mı (Zamanlı) yoksa tek bir yıl mı (Sabit) kontrol ettim.',
+    text: '2. I checked whether the table has years (Dynamic) or a single year (Static) and locked my verb list.',
   },
   {
     id: 'pw-3',
-    text: '3. Tablodaki 15 sayıdan sadece en önemli 7–8 tanesini seçtim, düz giden 2015 ara yıllarını çizdim.',
+    text: '3. I circled 6 to 8 key numbers and crossed out straight-line middle years.',
   },
   {
     id: 'pw-4',
-    text: '4. Satırları 3. Paragraf (Büyük Harcamalar) ve 4. Paragraf (Küçük/Zıt Harcamalar) için ikiye ayırdım.',
+    text: '4. I divided the rows into two logical groups for Body Paragraph 1 and Body Paragraph 2.',
   },
   {
     id: 'pw-5',
-    text: '5. 2. Paragrafta (Overview) hiç sayı kullanmadan söyleyeceğim 2 cümleyi belirledim.',
+    text: '5. I planned my 2-sentence Overview and confirmed it contains zero raw numbers.',
   },
 ];
 
@@ -46,17 +46,17 @@ export default function PlanningMethods({ perspectiveMode, onMarkComplete }) {
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            7. Adım · Sınavda 20 Dakikayı Nasıl Kullanmalıyım?
+            Step 07 · 20-Minute Exam Planning Guide
           </span>
           <span className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-200/70 text-zinc-800">
-            5 Dk Planla · 13 Dk Yaz · 2 Dk Kontrol Et
+            5 Mins Plan · 13 Mins Write · 2 Mins Check
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          Kalemi Elinize Almadan Önce İlk 5 Dakikada Ne Yapacaksınız?
+          How to Spend Your 20 Minutes in the Exam
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          Sınavda soruyu görür görmez yazmaya başlayan öğrenciler 3. paragrafa gelince tıkanır. İlk <strong>5 dakikayı soru kağıdının üzerinde sayıları seçip gruplamaya</strong> ayırırsanız, kalan 13 dakikada 4 paragrafı hiç duraksamadan yazarsınız.
+          Students who start writing in Minute 1 get stuck halfway through Body Paragraph 1. Spend your first <strong>5 minutes</strong> circling your 7–8 numbers and grouping the rows on your question paper—then write your 4 paragraphs in 13 minutes.
         </p>
       </div>
 
@@ -81,7 +81,7 @@ export default function PlanningMethods({ perspectiveMode, onMarkComplete }) {
 
               <div>
                 <div className="text-xs font-mono text-zinc-500 uppercase">
-                  Ne Zaman Kullanılır?
+                  When to Use:
                 </div>
                 <h3 className="font-serif text-lg font-medium text-zinc-900 mt-0.5">
                   {method.bestFor}
@@ -117,7 +117,7 @@ export default function PlanningMethods({ perspectiveMode, onMarkComplete }) {
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-zinc-700" />
             <h3 className="font-serif text-lg font-medium text-zinc-900">
-              Dakika Dakika 20 Dakikalık Sınav Planı
+              Minute-by-Minute Pacing Schedule
             </h3>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function PlanningMethods({ perspectiveMode, onMarkComplete }) {
                 </ul>
               </div>
               <div className="pt-2 border-t border-zinc-200/80 font-mono text-[10px] text-zinc-500 uppercase">
-                Aşama 0{idx + 1} / 04
+                Stage 0{idx + 1} of 04
               </div>
             </div>
           ))}
@@ -156,7 +156,7 @@ export default function PlanningMethods({ perspectiveMode, onMarkComplete }) {
       <div className="border border-zinc-200 rounded bg-white p-5 space-y-3">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-serif text-lg font-medium text-zinc-900">
-            Yazmaya Başlamadan Önce 5 Saniyelik Kontrol Listesi
+            5-Minute Pre-Writing Checklist
           </h3>
         </div>
 
@@ -194,7 +194,7 @@ export default function PlanningMethods({ perspectiveMode, onMarkComplete }) {
           onClick={() => onMarkComplete('m7-planning-methods')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Planlamayı Öğrendim, 8.5 Puanlık Örnek Yazıyı Gör →
+          Continue to Step 08: Band 8.5 Model Essay →
         </button>
       </div>
     </section>

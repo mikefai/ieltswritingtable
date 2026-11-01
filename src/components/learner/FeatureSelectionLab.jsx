@@ -6,18 +6,18 @@ import DataTableRenderer from '../shared/DataTableRenderer';
 const BRUSH_OPTIONS = [
   {
     id: 'must_report',
-    label: '1. Mutlaka Yaz (Ana Sayı)',
-    shortDesc: 'Yazıda kesinlikle geçmesi gereken 7 ana sayı',
+    label: '1. Must Report (Key Number)',
+    shortDesc: 'Primary anchors you must write (Target: 7 cells)',
   },
   {
     id: 'supporting',
-    label: '2. Yardımcı Sayı (Başlangıç/Bitiş)',
-    shortDesc: 'Karşılaştırmayı tamamlamak için kullanılan 4 yardımcı sayı',
+    label: '2. Supporting Context',
+    shortDesc: 'Starting/ending benchmarks for comparison (4 cells)',
   },
   {
     id: 'omit',
-    label: '3. Atla / Yazma (Gereksiz Ara Yıl)',
-    shortDesc: 'Yazarsanız liste cezası alacağınız 4 ara sayı (2015)',
+    label: '3. Skip / Omit (Noise)',
+    shortDesc: 'Straight-line 2015 midpoints to leave out (4 cells)',
   },
 ];
 
@@ -51,7 +51,7 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
       PRIMARY_TABLE_DATASET.columns.find((c) => c.key === colKey)?.label || colKey;
     setSelectedCellDetail({
       cellId,
-      category: `${row.category} (${row.categoryTR})`,
+      category: row.category,
       year: colLabel,
       cell,
       appliedTag: activeBrush,
@@ -77,29 +77,23 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
     ([cellId, tag]) => examinerKey[cellId] === tag
   ).length;
 
-  const statusLabelTR = (status) => {
-    if (status === 'must_report') return 'MUTLAKA YAZ (Ana Sayı)';
-    if (status === 'supporting') return 'YARDIMCI SAYI';
-    return 'ATLA / YAZMA (Gereksiz Ara Yıl)';
-  };
-
   return (
     <section className="space-y-8">
       {/* Module Header */}
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            3. Adım · Sayı Seçme Uygulaması
+            Step 03 · Feature-Selection Practice
           </span>
           <span className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-200/70 text-zinc-800">
-            15 Sayıdan Hangilerini Yazacağız?
+            Fixes Mistake #1: Writing Every Number
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          Hangi Sayıları Seçmeliyim, Hangilerini Atlamalıyım?
+          Which Numbers Should You Include in Your Essay?
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          Bu tabloda 15 kutu (hücre) var. Hepsini yazarsanız puanınız 6.0’ı geçemez! Şimdi aşağıdaki <strong>3 fırçadan birini seçip</strong> tablodaki kutulara tıklayın. Tıkladığınız anda o sayıyı yazmanız gerekip gerekmediğini Türkçe açıklamasıyla göreceksiniz. (Veya sağdaki <strong>&ldquo;Cevap Anahtarını Göster&rdquo;</strong> butonuna basabilirsiniz.)
+          Select a tag brush below and click the cells in the table to decide which numbers to <strong>Report</strong> and which 2015 midpoints to <strong>Skip</strong>. Or click <strong>&ldquo;Show Answer Key&rdquo;</strong> to see the exact selection.
         </p>
       </div>
 
@@ -107,37 +101,37 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="border border-zinc-200 rounded bg-white p-4 space-y-1.5">
           <div className="font-mono text-xs uppercase text-amber-800 font-semibold">
-            İpucu 1 · En Büyük ve En Küçük
+            Rule 01 · Highest &amp; Lowest
           </div>
           <h3 className="font-serif text-base font-medium text-zinc-900">
-            Zirve ve Dip Noktalar
+            Global Peak &amp; Trough
           </h3>
           <p className="text-xs text-zinc-600 leading-relaxed">
-            Tablodaki en yüksek sayı (<strong>Konut 2025: $21,500</strong>) ve en düşük sayı (<strong>Basılı Medya 2025: $300</strong>) her zaman <em>Mutlaka Yaz</em> grubundadır.
+            Always report the highest value (<strong>Housing 2025: $21,500</strong>) and lowest value (<strong>Print Media 2025: $300</strong>).
           </p>
         </div>
 
         <div className="border border-zinc-200 rounded bg-white p-4 space-y-1.5">
           <div className="font-mono text-xs uppercase text-emerald-800 font-semibold">
-            İpucu 2 · En Hızlı Değişenler
+            Rule 02 · Start &amp; End Only
           </div>
           <h3 className="font-serif text-base font-medium text-zinc-900">
-            Başlangıç ve Bitişi Al, Ortayı Atla!
+            Skip Straight-Line Middle Years
           </h3>
           <p className="text-xs text-zinc-600 leading-relaxed">
-            Sürekli artan (Konut, Dijital) veya sürekli azalan (Gıda, Basılı Medya) satırlarda <strong>2005 ve 2025’i alın, ortadaki 2015 yılını ATLAYIN!</strong>
+            When a row goes steadily up or down (Housing, Food, Digital, Print), report <strong>2005 and 2025</strong> and <strong>skip 2015</strong>.
           </p>
         </div>
 
         <div className="border border-zinc-200 rounded bg-white p-4 space-y-1.5">
           <div className="font-mono text-xs uppercase text-rose-800 font-semibold">
-            İpucu 3 · Tek İstisna Satır
+            Rule 03 · The Exception
           </div>
           <h3 className="font-serif text-base font-medium text-zinc-900">
-            2015 Yılı Sadece Ulaşım İçin Yazılır
+            Report 2015 Only for Transport
           </h3>
           <p className="text-xs text-zinc-600 leading-relaxed">
-            Sadece <strong>Ulaşım (Transport)</strong> 2015’te <strong>$8,500 ile zirve yapıp</strong> sonra düşüyor. Bu yüzden 2015 sütununda sadece bu sayıyı seçmeliyiz!
+            <strong>Transport</strong> is the only row that peaked in 2015 (<strong>$8,500</strong>) before falling to $6,200.
           </p>
         </div>
       </div>
@@ -148,7 +142,7 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
           <div className="space-y-1">
             <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-zinc-500">
               <Tag className="w-3.5 h-3.5" />
-              <span>Bir etiket seçin ve aşağıdaki tablodaki sayılara tıklayın:</span>
+              <span>Pick a tag brush, then click cells in the table:</span>
             </div>
             <div className="flex flex-wrap items-center gap-2 pt-1">
               {BRUSH_OPTIONS.map((brush) => {
@@ -178,7 +172,7 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono bg-zinc-900 text-white hover:bg-zinc-800 transition-colors"
             >
               <KeyRound className="w-3.5 h-3.5" />
-              <span>Cevap Anahtarını Göster</span>
+              <span>Show Answer Key</span>
             </button>
             <button
               type="button"
@@ -186,7 +180,7 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
               className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-mono text-zinc-600 hover:text-zinc-900 border border-zinc-200 hover:bg-zinc-50 transition-colors"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              <span>Sıfırla</span>
+              <span>Reset</span>
             </button>
           </div>
         </div>
@@ -203,19 +197,19 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
                   : 'bg-zinc-100 text-zinc-800'
               }`}
             >
-              Mutlaka Yazılan: {mustReportCount} (Hedef: 7)
+              Must Report: {mustReportCount}/7 Target
             </span>
             <span className="text-zinc-600">
-              Yardımcı Sayı: {supportingCount} (Hedef: 4)
+              Supporting: {supportingCount}/4
             </span>
             <span className="text-zinc-600">
-              Atlanan Ara Yıl: {omitCount} (Hedef: 4)
+              Skipped Midpoints: {omitCount}/4
             </span>
           </div>
 
           <div className="text-zinc-700">
-            Doğru Eşleşme:{' '}
-            <strong className="text-zinc-900">{exactMatches} / 15 kutu</strong>
+            Accuracy Match:{' '}
+            <strong className="text-zinc-900">{exactMatches} / 15 cells</strong>
           </div>
         </div>
 
@@ -223,7 +217,7 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
           <div className="p-2.5 rounded bg-rose-50 border border-rose-200 text-xs text-rose-900 flex items-center gap-2">
             <AlertCircle className="w-4 h-4 shrink-0" />
             <span>
-              <strong>Dikkat (Çok Fazla Sayı Seçtiniz!):</strong> {mustReportCount} tane sayıyı &ldquo;Mutlaka Yaz&rdquo; olarak işaretlediniz. 8’den fazla ana sayı seçerseniz yazınız listeye dönüşür. Ortadaki 2015 sütunundaki düz sayıları &ldquo;Atla&rdquo; olarak işaretleyin!
+              <strong>Too Many Key Numbers ({mustReportCount} selected):</strong> Selecting more than 8 primary numbers leads to mechanical listing. Tag the straight-line 2015 midpoints as &ldquo;Skip / Omit&rdquo;!
             </span>
           </div>
         )}
@@ -248,7 +242,7 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
                 {selectedCellDetail.category} · {selectedCellDetail.year}
               </span>
               <span className="font-mono text-xs text-zinc-600">
-                Tablodaki Sayı: {selectedCellDetail.cell.value} (Gerçek Değeri: {selectedCellDetail.cell.trueDollarValue})
+                Cell Value: {selectedCellDetail.cell.value} ({selectedCellDetail.cell.trueDollarValue})
               </span>
             </div>
 
@@ -262,13 +256,13 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
               {selectedCellDetail.appliedTag === selectedCellDetail.cell.status ? (
                 <>
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Doğru Seçim! ({statusLabelTR(selectedCellDetail.cell.status)})</span>
+                  <span>Matches Answer Key ({selectedCellDetail.cell.status.replace('_', ' ').toUpperCase()})</span>
                 </>
               ) : (
                 <>
                   <AlertCircle className="w-3.5 h-3.5" />
                   <span>
-                    Olması Gereken: {statusLabelTR(selectedCellDetail.cell.status)}
+                    Recommended: {selectedCellDetail.cell.status.replace('_', ' ').toUpperCase()}
                   </span>
                 </>
               )}
@@ -281,7 +275,7 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
         </div>
       ) : (
         <div className="border border-dashed border-zinc-300 rounded bg-zinc-50/60 p-4 text-center text-xs text-zinc-600 font-mono">
-          Yukarıdaki tabloda herhangi bir sayıya tıklayarak o sayıyı kompozisyonda yazıp yazmayacağımızı öğrenin.
+          Click any number in the table above to see whether you should include it in your essay.
         </div>
       )}
 
@@ -291,7 +285,7 @@ export default function FeatureSelectionLab({ perspectiveMode, onMarkComplete })
           onClick={() => onMarkComplete('m3-feature-selection')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Sayı Seçimini Tamamladım, Paragraf Gruplamaya Geç →
+          Continue to Step 04: Group into 2 Paragraphs →
         </button>
       </div>
     </section>

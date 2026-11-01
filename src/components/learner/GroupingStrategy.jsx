@@ -61,17 +61,17 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            4. Adım · Paragrafları Gruplama (Body 1 &amp; Body 2)
+            Step 04 · Grouping Rows into Body Paragraphs 1 &amp; 2
           </span>
           <span className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-200/70 text-zinc-800">
-            Hata #2 Çözümü: Satır Satır Sırayla Yazma!
+            Fixes Mistake #2: Row-by-Row Listing
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          5 Satırı 2 Detay Paragrafına Nasıl Böleriz?
+          How to Split 5 Categories into 2 Logical Body Paragraphs
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          Yazımızın 1. paragrafı Giriş, 2. paragrafı ise Overview (Genel Bakış) olacak. Peki sayıları vereceğimiz <strong>3. Paragraf (Body 1)</strong> ve <strong>4. Paragrafta (Body 2)</strong> bu 5 kategoriyi nasıl paylaşacağız? Sakın yukarıdan aşağıya sırayla anlatmayın; kategorileri <strong>büyüklüklerine göre 2 gruba</strong> ayırın!
+          Paragraph 1 is your Introduction and Paragraph 2 is your Overview. To get Band 8+ in Coherence &amp; Cohesion, do not describe the 5 rows one by one from top to bottom. Instead, divide the rows into <strong>Body Paragraph 1 (Large Core Expenses)</strong> and <strong>Body Paragraph 2 (Small Opposite Categories)</strong>.
         </p>
       </div>
 
@@ -80,9 +80,9 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
         <div className="border border-rose-200 rounded bg-white p-5 space-y-3">
           <div className="flex items-center justify-between">
             <span className="font-mono text-xs uppercase tracking-wider px-2 py-0.5 rounded bg-rose-50 text-rose-900 border border-rose-200 font-semibold">
-              Yanlış Yöntem (5.5 Puan)
+              Band 5.5 Trap · Row-by-Row Walk
             </span>
-            <span className="font-mono text-xs text-rose-800">Sırayla Tek Tek Saymak</span>
+            <span className="font-mono text-xs text-rose-800">Caps CC at 6.0</span>
           </div>
           <h3 className="font-serif text-lg font-medium text-zinc-900">
             &ldquo;First... Second... Third... Finally...&rdquo;
@@ -93,35 +93,35 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
             </p>
           </div>
           <p className="text-xs text-zinc-600 leading-relaxed">
-            <strong>Neden Puan Kırılır?</strong> Öğrenci kategorileri birbiriyle hiç karşılaştırmamış; sadece tablodaki 5 satırı alt alta okumuş.
+            <strong>Why It Loses Marks:</strong> There is no grouping or comparison between rows—just five separate sentences listed in order.
           </p>
         </div>
 
         <div className="border border-emerald-200 rounded bg-white p-5 space-y-3">
           <div className="flex items-center justify-between">
             <span className="font-mono text-xs uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold">
-              Doğru Yöntem (8.5 Puan)
+              Band 8.5 Plan · 2 Logical Groups
             </span>
-            <span className="font-mono text-xs text-emerald-800">2 Mantıklı Grup</span>
+            <span className="font-mono text-xs text-emerald-800">Full CC Score</span>
           </div>
           <h3 className="font-serif text-lg font-medium text-zinc-900">
-            Büyük Harcamalar (3. Paragraf) vs. Küçük/Zıt Harcamalar (4. Paragraf)
+            Group by Scale &amp; Opposite Trends
           </h3>
           <div className="space-y-2 text-xs text-zinc-700">
             <div className="p-3 rounded bg-zinc-50 border border-zinc-200">
               <div className="font-mono uppercase text-[11px] font-semibold text-zinc-900">
-                3. Paragraf (Body 1): Büyük Yaşam Giderleri ($6,200 – $21,500)
+                Paragraph 3 (Body 1): Large Core Expenses ($6,200 – $21,500)
               </div>
               <p className="mt-1">
-                Hane bütçesinin büyük kısmını götüren <strong>Konut</strong>, <strong>Gıda</strong> ve <strong>Ulaşım</strong> burada anlatılır.
+                Group <strong>Housing</strong> (#1 leader), <strong>Food</strong> (#2 staple), and <strong>Transport</strong> (#3 staple with the 2015 peak).
               </p>
             </div>
             <div className="p-3 rounded bg-zinc-50 border border-zinc-200">
               <div className="font-mono uppercase text-[11px] font-semibold text-zinc-900">
-                4. Paragraf (Body 2): Küçük Ama Zıt İkili ($300 – $5,800)
+                Paragraph 4 (Body 2): Small Opposite Sectors ($300 – $5,800)
               </div>
               <p className="mt-1">
-                Bütçede küçük yer tutan ama tam zıt yönde hareket eden <strong>Dijital İletişim</strong> (5 kat arttı) ile <strong>Basılı Medya</strong> (altıda birine çöktü) burada kıyaslanır.
+                Pair <strong>Digital &amp; Telecoms</strong> (nearly 5x surge) with <strong>Print Media</strong> (collapsed to one-sixth) to highlight how they swapped places.
               </p>
             </div>
           </div>
@@ -133,10 +133,10 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200 pb-4">
           <div>
             <h3 className="font-serif text-lg font-medium text-zinc-900">
-              Uygulama: Kategorileri 3. ve 4. Paragrafa Yerleştirin
+              Practice: Assign Each Category to Body Paragraph 1 or 2
             </h3>
             <p className="text-xs text-zinc-600 mt-0.5">
-              Her satırın karşısındaki butonlardan <strong>3. Paragraf (Body 1)</strong> veya <strong>4. Paragraf (Body 2)</strong> seçeneğine tıklayın:
+              Click <strong>Body Paragraph 1</strong> or <strong>Body Paragraph 2</strong> for each row:
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -146,7 +146,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono bg-zinc-900 text-white hover:bg-zinc-800"
             >
               <KeyRound className="w-3.5 h-3.5" />
-              <span>Doğru Gruplamayı Göster</span>
+              <span>Show Band 8.5 Grouping</span>
             </button>
             <button
               type="button"
@@ -154,7 +154,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
               className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-mono text-zinc-600 hover:text-zinc-900 border border-zinc-200"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              <span>Sıfırla</span>
+              <span>Reset</span>
             </button>
           </div>
         </div>
@@ -172,7 +172,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
                 <div className="space-y-0.5 min-w-0 flex-1">
                   <div className="flex items-center gap-3 flex-wrap">
                     <span className="font-medium text-sm text-zinc-900">
-                      {row.category} ({row.categoryTR})
+                      {row.category}
                     </span>
                     <span className="font-mono text-xs text-zinc-500 tabular-nums">
                       2005: ${row.cells.y2005.value}k → 2015: ${row.cells.y2015.value}k → 2025: ${row.cells.y2025.value}k
@@ -205,7 +205,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
                         : 'bg-white text-zinc-700 border-zinc-300 hover:bg-zinc-100'
                     }`}
                   >
-                    3. Paragraf (Büyük Harcamalar)
+                    Body Paragraph 1 (Large Costs)
                   </button>
                   <button
                     type="button"
@@ -216,7 +216,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
                         : 'bg-white text-zinc-700 border-zinc-300 hover:bg-zinc-100'
                     }`}
                   >
-                    4. Paragraf (Dijital vs. Basılı)
+                    Body Paragraph 2 (Small / Opposite)
                   </button>
                 </div>
               </div>
@@ -235,13 +235,13 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
           >
             <div className="font-mono uppercase font-semibold mb-1">
               {correctCount === 5
-                ? 'Tebrikler! 5/5 Doğru Paragraf Planı (Band 8.5)'
-                : `Eşleşme: ${correctCount}/5 Kategori Doğru`}
+                ? '5/5 Matched — Ready for Body Paragraphs 1 & 2!'
+                : `Matched ${correctCount}/5 Categories`}
             </div>
             <p>
               {correctCount === 5
-                ? 'Harika! Şimdi 3. paragrafta Konut, Gıda ve Ulaşım’ı; 4. paragrafta ise Dijital ve Basılı Medya arasındaki zıtlığı anlatmaya hazırsınız.'
-                : 'Yukarıdaki açıklamalara göre yanlış grupta olan kategorileri düzeltin.'}
+                ? 'You have separated the 3 big living costs (Body 1) from the 2 small opposite categories (Body 2).'
+                : 'Check the feedback notes above to adjust your paragraph grouping.'}
             </p>
           </div>
         )}
@@ -253,7 +253,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
           onClick={() => onMarkComplete('m4-grouping-strategy')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Gruplamayı Tamamladım, Overview Yazımına Geç →
+          Continue to Step 05: Write the Overview →
         </button>
       </div>
     </section>

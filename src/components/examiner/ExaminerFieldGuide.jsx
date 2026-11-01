@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Check, X, Info } from 'lucide-react';
+import { AlertTriangle, Check, X } from 'lucide-react';
 import {
   DYNAMIC_VS_STATIC_TAXONOMY,
   UNIT_HEADER_TRAPS,
@@ -8,36 +8,36 @@ import {
 const VERB_TEST_CASES = [
   {
     id: 'vt-1',
-    datasetContext: 'Sabit Tablo (Tek Yıl - 2024): 5 Şehirde Ulaşım Oranları',
+    datasetContext: 'Static Table (Single Year - 2024): Commuter Transport Across 5 Cities',
     candidateSentence:
       '"Rail usage started at 3% in Houston and rose sharply to 64% in Tokyo."',
     isLegitimate: false,
-    verdict: 'YANLIŞ! (Sabit Tabloda "Arttı" Denmez — Puan Kırılır)',
+    verdict: 'INCORRECT (Never Use "Rose/Started" on a Single-Year Table)',
     rationale:
-      'Houston şehri zaman içinde büyüyüp Tokyo’ya dönüşmez! Tabloda yıllar (2005 -> 2025 gibi) yoksa ASLA "started at (başladı)" veya "rose (yükseldi)" kelimelerini kullanmayın.',
+      'Houston does not turn into Tokyo over time! When a table has no time progression, using change verbs ("started at", "rose sharply") lowers both Vocabulary and Grammar scores.',
     correctedVersion:
-      '"Whereas a mere 3% of commuters in Houston used rail, the proportion in Tokyo stood at 64%—the highest figure in the table." (Houston’da sadece %3 metro kullanırken, Tokyo’da bu oran %64 ile en yüksek seviyededir.)',
+      '"Whereas a mere 3% of commuters in Houston used rail, the proportion in Tokyo stood at 64%—the highest figure in the table."',
   },
   {
     id: 'vt-2',
-    datasetContext: 'Sabit Tablo (Tek Yıl - 2024): 5 Şehirde Ulaşım Oranları',
+    datasetContext: 'Static Table (Single Year - 2024): Commuter Transport Across 5 Cities',
     candidateSentence:
       '"Private car reliance in Houston (86%) was nearly eight times as high as that recorded in Tokyo (11%)."',
     isLegitimate: true,
-    verdict: 'DOĞRU! (8.5 Puanlık Sabit Karşılaştırma)',
+    verdict: 'CORRECT (Band 8.5 Static Comparison)',
     rationale:
-      'Zaman akışı olmayan tabloda iki şehri kıyaslarken "nearly eight times as high as" (neredeyse 8 katı kadar yüksekti) kalıbını kullanmak tam puan getirir.',
+      'Compares two cities in the same year using a scale multiple ("nearly eight times as high as") without implying change over time.',
     correctedVersion: null,
   },
   {
     id: 'vt-3',
-    datasetContext: 'Zamanlı Tablo (2005–2025): Hane Harcamaları (Bin Dolar)',
+    datasetContext: 'Dynamic Table (2005–2025): Household Expenditure (in US$ thousands)',
     candidateSentence:
       '"In 2005 Digital was 1.2. In 2015 Digital was 2.9. In 2025 Digital was 5.8."',
     isLegitimate: false,
-    verdict: 'ZAYIF! (5.5 Puanlık Tek Tek Sayma Hatası)',
+    verdict: 'WEAK (Band 5.5 Year-by-Year Listing)',
     rationale:
-      'Tabloda yıllar varken her yılı ayrı ayrı "2005’te şuydu, 2015’te buydu" diye saymak liste yapmaktır. Bunun yerine "2005’ten 2025’e yaklaşık 5 kat arttı" diyerek değişimi anlatmalısınız.',
+      'When a table has years (2005 → 2015 → 2025), listing every year in separate sentences is mechanical. Connect 2005 and 2025 to show the nearly fivefold surge.',
     correctedVersion:
       '"Household outlays on digital communications surged nearly fivefold over the twenty-year period, climbing from $1,200 in 2005 to $5,800 by 2025."',
   },
@@ -58,17 +58,17 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            1. Adım · Yazmaya Başlamadan Önce 3 Altın Kural
+            Step 01 · The 3 Core Rules for Table Essays
           </span>
           <span className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-200/70 text-zinc-800">
-            Hedef: 5.5 Tuzaklarından Kurtulmak
+            Avoid Band 5.5 / 6.0 Traps
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          Tablo Sorularında Yüksek Puan Almanın 3 Sırrı
+          How to Read Any IELTS Table Before You Write
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          Çizgi grafiğinde çizginin yukarı mı aşağı mı gittiğini hemen görürsünüz; ancak <strong>tablo (table)</strong> sorularında sadece kutular içinde sayılar vardır. Kalemi elinize almadan önce şu <strong>3 basit kuralı</strong> bilmek sizi doğrudan 5.5 puandan 7.5+ seviyesine taşır.
+          Unlike line graphs that show visual slopes, tables give you a raw grid of numbers. Before writing your 4 paragraphs, check these <strong>3 simple rules</strong> so you do not lose easy marks.
         </p>
       </div>
 
@@ -76,10 +76,10 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
       <div className="space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-serif text-xl font-medium text-zinc-900">
-            Kural 1: Tabloda Yıllar Var mı (Zamanlı), Yok mu (Sabit)?
+            Rule 1: Does the Table Have Years (Dynamic) or Not (Static)?
           </h3>
           <span className="font-mono text-xs text-rose-800 bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded">
-            Uyarı: Yıl olmayan tabloda &ldquo;increased / fell&rdquo; yazmak puan kırar!
+            Examiner Rule: Never write &ldquo;rose / fell&rdquo; if there are no years!
           </span>
         </div>
 
@@ -100,18 +100,18 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
 
                   <div className="mt-3 space-y-2 text-xs text-zinc-600">
                     <p>
-                      <strong className="text-zinc-900 font-medium">Nasıl Anlarım? </strong>
+                      <strong className="text-zinc-900 font-medium">How to Spot It: </strong>
                       {item.identificationRule}
                     </p>
                     <p>
-                      <strong className="text-zinc-900 font-medium">Nasıl Anlatmalıyım? </strong>
+                      <strong className="text-zinc-900 font-medium">What to Describe: </strong>
                       {item.analyticalQuestion}
                     </p>
                   </div>
 
                   <div className="mt-4">
                     <div className="font-mono text-[11px] uppercase tracking-wider text-emerald-800 font-semibold mb-1.5">
-                      Kullanacağınız İngilizce Kelimeler:
+                      Useful Vocabulary &amp; Structures:
                     </div>
                     <ul className="space-y-1.5 text-xs text-zinc-700">
                       {item.legitimateLexis.map((lex, i) => (
@@ -127,7 +127,7 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
                 <div className="p-3 rounded bg-rose-50/50 border border-rose-200 text-xs text-zinc-800">
                   <div className="flex items-center gap-1.5 font-mono text-[11px] uppercase text-rose-800 font-semibold mb-1">
                     <AlertTriangle className="w-3.5 h-3.5" />
-                    <span>Sakın Bunu Yapmayın:</span>
+                    <span>What to Avoid:</span>
                   </div>
                   <p className="leading-relaxed">{item.prohibitedTrap}</p>
                 </div>
@@ -141,10 +141,10 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
           <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
             <div>
               <h4 className="text-sm font-semibold text-zinc-900">
-                Mini Test: Bu Cümle Doğru mu, Yanlış mı?
+                Quick Check: Is This Sentence Right or Wrong?
               </h4>
               <p className="text-xs text-zinc-500">
-                3 örnek cümleye tıklayarak sınav görevlisinin neden puan verdiğini veya kırdığını görün:
+                Click the 3 examples to see how examiners grade verb choices:
               </p>
             </div>
             <div className="flex items-center gap-1.5">
@@ -159,7 +159,7 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
                       : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200'
                   }`}
                 >
-                  Örnek 0{idx + 1}
+                  Example 0{idx + 1}
                 </button>
               ))}
             </div>
@@ -189,13 +189,13 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
               </span>
             </div>
             <p className="text-xs text-zinc-700 leading-relaxed">
-              <strong>Açıklama: </strong>
+              <strong>Why: </strong>
               {currentVerbTest.rationale}
             </p>
             {currentVerbTest.correctedVersion && (
               <div className="pt-2 border-t border-zinc-200/80 text-xs text-emerald-950">
                 <span className="font-mono uppercase text-[11px] text-emerald-800 font-semibold block mb-0.5">
-                  Doğru 8.5 Puanlık Yazımı:
+                  Band 8.5 Rewrite:
                 </span>
                 <span className="font-serif text-sm">{currentVerbTest.correctedVersion}</span>
               </div>
@@ -208,62 +208,62 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
       <div className="space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-serif text-xl font-medium text-zinc-900">
-            Kural 2: Tablodaki Tüm Sayıları Yazmayın! (6–8 Sayı Kuralı)
+            Rule 2: Do Not Write Every Number! (The 6–8 Figure Rule)
           </h3>
           <span className="font-mono text-xs text-zinc-600 bg-zinc-100 border border-zinc-200 px-2.5 py-0.5 rounded">
-            15 Hücreli Tabloda Kaç Sayı Yazılmalı?
+            How Many Numbers Should You Cite in a 15-Cell Table?
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="border border-zinc-200 rounded bg-white p-4">
             <div className="flex items-center justify-between font-mono text-xs text-zinc-500 mb-2">
-              <span>SADECE 1–4 SAYI YAZMAK</span>
+              <span>ONLY 1–4 NUMBERS</span>
               <span className="px-1.5 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200">
-                5.0 Puan (Eksik)
+                Band 5.0 (Too Few)
               </span>
             </div>
             <h4 className="font-medium text-sm text-zinc-900">
-              Kanıtsız Anlatım
+              Missing Data Support
             </h4>
             <p className="text-xs text-zinc-600 mt-1.5 leading-relaxed">
-              Sadece &ldquo;konut arttı, gıda azaldı&rdquo; deyip sayı vermemek puan kaybettirir. Detay paragraflarında (3. ve 4. paragraf) mutlaka sayısal kanıt vermelisiniz.
+              Saying &ldquo;housing went up and food went down&rdquo; without giving the starting and ending dollar amounts loses marks for lack of data support.
             </p>
           </div>
 
           <div className="border-2 border-zinc-900 rounded bg-white p-4">
             <div className="flex items-center justify-between font-mono text-xs text-zinc-900 font-semibold mb-2">
-              <span>6–8 ÖNEMLİ SAYI SEÇMEK</span>
+              <span>6–8 KEY NUMBERS</span>
               <span className="px-1.5 py-0.5 rounded bg-zinc-900 text-white">
-                7.5 – 9.0 Puan (İdeal!)
+                Band 7.5 – 9.0 (Sweet Spot)
               </span>
             </div>
             <h4 className="font-medium text-sm text-zinc-900">
-              Seçici ve Akıllı Özetleme
+              Smart Selection &amp; Comparison
             </h4>
             <p className="text-xs text-zinc-600 mt-1.5 leading-relaxed">
-              15 sayıdan sadece şu 4 ana noktayı seçip ortadaki sıradan ara yılları (2015) atlayın:
+              Pick the 4 main features and skip straight-line middle years (2015):
             </p>
             <ul className="mt-2 space-y-1 text-xs text-zinc-800 font-medium">
-              <li>1. En Yüksek (Zirve) ve En Düşük (Dip) Sayı</li>
-              <li>2. En Çok Artan ve En Çok Çöken Kategori</li>
-              <li>3. Tek İstisna (2015’te zirve yapan Ulaşım)</li>
-              <li>4. Sıralaması Değişen İkili (Dijital vs. Basılı)</li>
+              <li>1. Highest Value (Peak) &amp; Lowest Value (Trough)</li>
+              <li>2. Biggest Rise &amp; Biggest Drop (Start + End)</li>
+              <li>3. The Only Exception (Transport’s 2015 peak)</li>
+              <li>4. Rank Swap Pair (Digital overtaking Print)</li>
             </ul>
           </div>
 
           <div className="border border-zinc-200 rounded bg-white p-4">
             <div className="flex items-center justify-between font-mono text-xs text-zinc-500 mb-2">
-              <span>12–15 SAYININ HEPSİNİ YAZMAK</span>
+              <span>12–15 NUMBERS</span>
               <span className="px-1.5 py-0.5 rounded bg-rose-50 text-rose-900 border border-rose-200">
-                En Fazla 6.0 Puan!
+                Band 5.5 / 6.0 Ceiling
               </span>
             </div>
             <h4 className="font-medium text-sm text-zinc-900">
-              Robot Gibi Sayı Listeleme (Data Dumping)
+              Mechanical Listing (Data Dumping)
             </h4>
             <p className="text-xs text-zinc-600 mt-1.5 leading-relaxed">
-              Tablodaki her kutuyu (2005, 2015, 2025) tek tek cümleye dökmek özetleme değildir. Sınav görevlisi bunu &ldquo;mekanik listeleme&rdquo; sayar ve puanınızı 6.0’da durdurur.
+              Writing every cell in the table (2005, 2015, 2025 for all 5 rows) turns your essay into a list and caps Task Achievement at Band 6.0.
             </p>
           </div>
         </div>
@@ -273,10 +273,10 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
       <div className="space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-serif text-xl font-medium text-zinc-900">
-            Kural 3: Tablo Başlığındaki Birim Tuzaklarına Düşmeyin!
+            Rule 3: Watch Out for Unit &amp; Subject Traps
           </h3>
           <span className="font-mono text-xs text-zinc-500">
-            4 tuzağa tıklayarak doğru yazımını görün:
+            Click each trap to compare Band 5.5 vs. Band 8.5 reporting:
           </span>
         </div>
 
@@ -299,7 +299,7 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
                     active ? 'text-amber-300' : 'text-zinc-500'
                   }`}
                 >
-                  Dikkat Edilecek Tuzak
+                  Common Trap
                 </div>
                 <div className="text-xs font-medium mt-1 leading-snug">
                   {trap.title}
@@ -322,7 +322,7 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-3.5 rounded bg-rose-50/50 border border-rose-200 space-y-2">
               <div className="font-mono text-[11px] uppercase tracking-wider text-rose-900 font-semibold">
-                Öğrencinin Yaptığı Yanlış (5.5 Puan)
+                Band 5.5 Mistake
               </div>
               <p className="font-serif text-sm text-zinc-900 italic">
                 {activeTrap.band5Error}
@@ -334,14 +334,14 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
 
             <div className="p-3.5 rounded bg-emerald-50/50 border border-emerald-200 space-y-2">
               <div className="font-mono text-[11px] uppercase tracking-wider text-emerald-900 font-semibold">
-                Doğru Yazımı (8.5 Puan)
+                Band 8.5 Accurate Reporting
               </div>
               <p className="font-serif text-sm text-zinc-900 italic">
                 {activeTrap.band8Calibration}
               </p>
               <p className="text-xs text-emerald-900 pt-1 border-t border-emerald-200/60">
-                <strong>Neden Yüksek Puan Alır? </strong>
-                Tablo başlığındaki birimi (thousands = bin dolar) cümleye doğru yansıtır ve özneyi hatasız kurar.
+                <strong>Why It Scores High: </strong>
+                Applies the header unit accurately and uses a logical subject (&ldquo;expenditure/spending on...&rdquo;).
               </p>
             </div>
           </div>
@@ -354,7 +354,7 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
           onClick={() => onMarkComplete('m1-examiner-guide')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          1. Adımı Anladım, Tabloyu İncelemeye Geç →
+          Continue to Step 02: Explore the Table →
         </button>
       </div>
     </section>

@@ -6,27 +6,27 @@ import DataTableRenderer from '../shared/DataTableRenderer';
 const CRITERION_FILTERS = [
   {
     id: 'ALL',
-    label: 'Tüm Açıklamaları Renklendir',
+    label: 'All Annotations',
   },
   {
     id: 'TA',
-    label: '[TA] Seçilen 8 Sayı ve Özet',
+    label: '[TA] Key Features (8 Figures)',
   },
   {
     id: 'CC',
-    label: '[CC] Bağlaçlar (Overall, Conversely)',
+    label: '[CC] Linkers & Cohesion',
   },
   {
     id: 'LR',
-    label: '[LR] Üst Düzey Kelimeler',
+    label: '[LR] Vocabulary',
   },
   {
     id: 'GRA',
-    label: '[GRA] Kat, Kesir ve Respectively Kalıpları',
+    label: '[GRA] Grammar Patterns',
   },
   {
     id: 'NONE',
-    label: 'Sade Metin',
+    label: 'Clean Text',
   },
 ];
 
@@ -34,7 +34,7 @@ export default function ModelAnswer({ perspectiveMode, onMarkComplete }) {
   const [activeCriterion, setActiveCriterion] = useState('ALL');
   const [selectedSegmentNote, setSelectedSegmentNote] = useState(null);
   const [showReferenceTable, setShowReferenceTable] = useState(false);
-  const [showTurkishTranslation, setShowTurkishTranslation] = useState(true);
+  const [showTurkishTranslation, setShowTurkishTranslation] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const isHighlighted = (tags) => {
@@ -80,22 +80,22 @@ export default function ModelAnswer({ perspectiveMode, onMarkComplete }) {
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            8. Adım · Cümle Cümle 8.5 Puanlık Örnek Yazı
+            Step 08 · Band 8.5 Annotated Benchmark Model
           </span>
           <div className="flex items-center gap-2 font-mono text-xs">
             <span className="px-2 py-0.5 rounded bg-zinc-900 text-white font-semibold">
-              Band {MODEL_ESSAY_DATA.targetBand} Örnek Rapor
+              Band {MODEL_ESSAY_DATA.targetBand} Model Essay
             </span>
             <span className="px-2 py-0.5 rounded bg-zinc-100 border border-zinc-200 text-zinc-800">
-              {MODEL_ESSAY_DATA.wordCount} Kelime · 4 Paragraf
+              {MODEL_ESSAY_DATA.wordCount} Words · 4 Paragraphs
             </span>
           </div>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          Tamamlanmış 4 Paragraflık Yazı Nasıl Görünür?
+          Complete Band 8.5 Model Essay (4-Paragraph Structure)
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          {MODEL_ESSAY_DATA.examinerSummary} Yazıdaki <strong>renkli cümlelere tıklayarak</strong> neden yüksek puan aldığını sağ kutuda Türkçe olarak okuyabilirsiniz.
+          {MODEL_ESSAY_DATA.examinerSummary} Click any highlighted phrase in the essay to inspect why it scores Band 8.5+.
         </p>
       </div>
 
@@ -127,19 +127,19 @@ export default function ModelAnswer({ perspectiveMode, onMarkComplete }) {
             onClick={() => setShowTurkishTranslation(!showTurkishTranslation)}
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-mono border ${
               showTurkishTranslation
-                ? 'bg-zinc-900 text-white border-zinc-900'
-                : 'bg-white text-zinc-700 border-zinc-200'
+                ? 'bg-amber-100 text-amber-950 border-amber-300 font-semibold'
+                : 'bg-white text-zinc-700 border-zinc-200 hover:text-zinc-900'
             }`}
           >
             <Languages className="w-3.5 h-3.5" />
-            <span>{showTurkishTranslation ? 'Türkçe Çeviriyi Gizle' : 'Türkçe Çeviriyi Göster'}</span>
+            <span>{showTurkishTranslation ? 'Hide TR Meaning' : 'TR Meaning'}</span>
           </button>
           <button
             type="button"
             onClick={() => setShowReferenceTable(!showReferenceTable)}
             className="px-2.5 py-1.5 rounded text-xs font-mono bg-white border border-zinc-200 text-zinc-700 hover:text-zinc-900"
           >
-            {showReferenceTable ? 'Tabloyu Gizle' : 'Tabloyu Göster'}
+            {showReferenceTable ? 'Hide Table' : 'Show Table'}
           </button>
           <button
             type="button"
@@ -147,7 +147,7 @@ export default function ModelAnswer({ perspectiveMode, onMarkComplete }) {
             className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-mono bg-white border border-zinc-200 text-zinc-700 hover:text-zinc-900"
           >
             {copied ? <Check className="w-3.5 h-3.5 text-emerald-700" /> : <Copy className="w-3.5 h-3.5" />}
-            <span>{copied ? 'Kopyalandı' : 'Yazıyı Kopyala'}</span>
+            <span>{copied ? 'Copied' : 'Copy Essay'}</span>
           </button>
         </div>
       </div>
@@ -207,9 +207,9 @@ export default function ModelAnswer({ perspectiveMode, onMarkComplete }) {
               </p>
 
               {showTurkishTranslation && para.translationTR && (
-                <div className="p-3 rounded bg-zinc-50 border border-zinc-200 text-xs text-zinc-600 leading-relaxed">
-                  <strong className="text-zinc-800 font-mono uppercase text-[10px] mr-1.5">
-                    Türkçe Çevirisi:
+                <div className="p-3 rounded bg-amber-50/60 border border-amber-200 text-xs text-amber-950 leading-relaxed">
+                  <strong className="font-mono uppercase text-[10px] mr-1.5">
+                    TR Anlamı:
                   </strong>
                   {para.translationTR}
                 </div>
@@ -222,10 +222,10 @@ export default function ModelAnswer({ perspectiveMode, onMarkComplete }) {
         <div className="border-2 border-zinc-900 rounded bg-white p-5 space-y-4 lg:sticky lg:top-20">
           <div className="border-b border-zinc-200 pb-3">
             <div className="font-mono text-xs uppercase tracking-wider text-zinc-500">
-              Cümle Analizi (Neden 8.5 Aldı?)
+              Examiner Note Inspector
             </div>
             <h3 className="font-serif text-base font-medium text-zinc-900 mt-0.5">
-              Soldaki renkli cümlelerden birine tıklayın
+              Click any highlighted phrase on the left
             </h3>
           </div>
 
@@ -256,17 +256,17 @@ export default function ModelAnswer({ perspectiveMode, onMarkComplete }) {
           ) : (
             <div className="space-y-3 text-xs text-zinc-600 leading-relaxed">
               <p>
-                Soldaki kompozisyonda renkli çizili herhangi bir ifadeye tıkladığınızda, o cümlenin hangi kalıbı kullandığını burada Türkçe olarak görebilirsiniz.
+                Click any colored sentence segment in the essay on the left to see why it scores Band 8.5+.
               </p>
               <div className="p-3 rounded bg-zinc-50 border border-zinc-200 space-y-1.5 font-mono text-[11px]">
                 <div className="font-semibold text-zinc-900">
-                  Bu Yazının Sayı Özeti:
+                  Model Report Data Summary:
                 </div>
-                <div>• Tablodaki toplam sayı: 15</div>
-                <div>• Overview’da kullanılan sayı: 0</div>
-                <div>• 3. ve 4. paragrafta kullanılan sayı: 8</div>
-                <div>• Atlanan 2015 ara yılları: 4 / 5</div>
-                <div>• Birim çevirisi ($14,200 ve $300): %100 Doğru</div>
+                <div>• Total cells in table: 15</div>
+                <div>• Raw figures in Overview: 0</div>
+                <div>• Key figures in Body 1 &amp; 2: 8</div>
+                <div>• 2015 Midpoints skipped: 4 of 5</div>
+                <div>• Unit header ($ thousands) applied: 100%</div>
               </div>
             </div>
           )}
@@ -279,7 +279,7 @@ export default function ModelAnswer({ perspectiveMode, onMarkComplete }) {
           onClick={() => onMarkComplete('m8-model-answer')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Örnek Yazıyı İnceledim, 5.5 Puanlık Hatalı Yazıya Geç →
+          Continue to Step 09: Band 5.5 Error Clinic →
         </button>
       </div>
     </section>
