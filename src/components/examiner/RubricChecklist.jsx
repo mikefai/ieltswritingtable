@@ -33,7 +33,6 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
     }));
   };
 
-  // Compute Band Estimate per criterion
   const computeCriterionScore = (group) => {
     const total = group.checkpoints.length;
     const passed = group.checkpoints.filter((c) => checkedMap[c.id]).length;
@@ -57,10 +56,8 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
 
   const rawAvg =
     criterionScores.reduce((sum, c) => sum + c.score, 0) / criterionScores.length;
-  // IELTS rounds to nearest 0.5
   const overallBand = (Math.round(rawAvg * 2) / 2).toFixed(1);
 
-  // Identify primary limiting criterion
   const minScore = Math.min(...criterionScores.map((c) => c.score));
   const limitingCriteria = criterionScores.filter((c) => c.score === minScore);
 
@@ -70,17 +67,17 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            Module 11 · Band Descriptor Diagnostic Checklist
+            11. Adım · Son Kontrol Listesi ve Tahmini Puan Hesaplayıcı
           </span>
           <span className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-200/70 text-zinc-800">
-            Bands 6.0 · 7.0 · 8.0+ Calibration Matrix
+            Band 6.0 · 7.0 · 8.5 Kontrolü
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          Self-Assessment &amp; Examiner Ceiling Diagnostic
+          Yazınızı Teslim Etmeden Önce Bu 13 Maddeyi Kontrol Edin
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          In IELTS Writing Task 1, your four criteria (<strong>TA, CC, LR, GRA</strong>) are weighted equally at 25% each. However, a single ceiling error in Task Achievement (such as omitting the overview or dropping the scale multiplier) will drag down an otherwise Band 8 essay. Audit your script against the 13 examiner checkpoints below.
+          Yazdığınız kompozisyonda yaptığınız maddeleri işaretleyin; yapmadıklarınızın işaretini kaldırın. Yukarıdaki kutu size <strong>tahmini IELTS Task 1 puanınızı</strong> ve puanınızı düşüren en büyük eksiği anında gösterecektir.
         </p>
       </div>
 
@@ -89,10 +86,10 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-200 pb-4">
           <div>
             <div className="font-mono text-xs uppercase tracking-wider text-zinc-500">
-              Diagnostic Score Profile
+              Tahmini IELTS Task 1 Puanınız
             </div>
             <h3 className="font-serif text-xl font-medium text-zinc-900 mt-0.5">
-              Estimated Task 1 Band: <span className="font-mono font-bold">{overallBand}</span>
+              Ortalama Band Puanı: <span className="font-mono font-bold">{overallBand}</span>
             </h3>
           </div>
 
@@ -122,10 +119,10 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
                 <AlertOctagon className="w-4 h-4 text-rose-700 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-zinc-900 font-mono uppercase">
-                    Current Score Bottleneck ({limitingCriteria.map((c) => c.fullName).join(' & ')} at Band {minScore.toFixed(1)}):{' '}
+                    Puanınızı Aşağı Çeken Kriter ({limitingCriteria.map((c) => c.fullName).join(' & ')} — {minScore.toFixed(1)}):{' '}
                   </strong>
                   <span>
-                    Unchecked critical ceiling items below are holding back your overall Task 1 score. Review the linked remedy modules to remove these penalties.
+                    Aşağıda işaretlenmemiş kırmızı maddeler puanınızı 6.0 seviyesinde tutuyor. İlgili adıma dönüp o cümleyi düzeltin.
                   </span>
                 </div>
               </>
@@ -134,10 +131,10 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
                 <Award className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-emerald-950 font-mono uppercase">
-                    Full Band 8.5 Calibration Verified:{' '}
+                    Tebrikler! 8.5 Puanlık Tüm Kriterler Tamam:{' '}
                   </strong>
                   <span>
-                    All critical examiner ceilings and advanced comparative syntax checkpoints are satisfied across TA, CC, LR, and GRA.
+                    Yazınız hem sayı seçimi, hem 4 paragraf düzeni, hem de karşılaştırma kalıpları açısından eksiksiz!
                   </span>
                 </div>
               </>
@@ -150,7 +147,7 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
             className="inline-flex items-center gap-1 text-xs font-mono text-zinc-500 hover:text-zinc-900"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>Clear All Checkboxes</span>
+            <span>Tüm İşaretleri Kaldır</span>
           </button>
         </div>
       </div>
@@ -168,14 +165,14 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
                 <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
                   <div>
                     <span className="font-mono text-xs uppercase px-2 py-0.5 rounded bg-zinc-900 text-white font-semibold">
-                      [{group.criterion}] · {group.weight}
+                      [{group.criterion}] · Ağırlık: {group.weight}
                     </span>
                     <h3 className="font-serif text-lg font-medium text-zinc-900 mt-1.5">
                       {group.fullName}
                     </h3>
                   </div>
                   <div className="text-right font-mono">
-                    <div className="text-[10px] uppercase text-zinc-500">Criterion Ceiling</div>
+                    <div className="text-[10px] uppercase text-zinc-500">Bu Kriter Puanı</div>
                     <div className="text-lg font-bold text-zinc-900">
                       Band {score.toFixed(1)}
                     </div>
@@ -218,12 +215,12 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
                               }`}
                             >
                               {cp.isCriticalCeiling
-                                ? 'Band 6 Ceiling Gatekeeper'
-                                : `Band ${cp.bandTarget}+ Differentiator`}
+                                ? 'Zorunlu Kural (Yoksa 6.0 Tavanı)'
+                                : `Band ${cp.bandTarget}+ İleri Seviye`}
                             </span>
                             {!isChecked && (
                               <span className="text-zinc-500">
-                                Fix in: {cp.remedyModule}
+                                Nerede Öğrenilir: {cp.remedyModule}
                               </span>
                             )}
                           </div>
@@ -244,7 +241,7 @@ export default function RubricChecklist({ perspectiveMode, onMarkComplete }) {
           onClick={() => onMarkComplete('m11-rubric-checklist')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Complete Masterclass Calibration ✓
+          Tüm Eğitimi Tamamladım ✓
         </button>
       </div>
     </section>

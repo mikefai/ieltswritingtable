@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Check, X, Scale, Layers, Info } from 'lucide-react';
+import { AlertTriangle, Check, X, Info } from 'lucide-react';
 import {
   DYNAMIC_VS_STATIC_TAXONOMY,
   UNIT_HEADER_TRAPS,
@@ -8,36 +8,36 @@ import {
 const VERB_TEST_CASES = [
   {
     id: 'vt-1',
-    datasetContext: 'Static Table: 2024 Commuter Transport Share Across 5 Cities',
+    datasetContext: 'Sabit Tablo (Tek Yıl - 2024): 5 Şehirde Ulaşım Oranları',
     candidateSentence:
       '"Rail usage started at 3% in Houston and rose sharply to 64% in Tokyo."',
     isLegitimate: false,
-    verdict: 'SEVERE PENALTY (Caps LR & GRA at Band 5/6)',
+    verdict: 'YANLIŞ! (Sabit Tabloda "Arttı" Denmez — Puan Kırılır)',
     rationale:
-      'Houston does not turn into Tokyo over time. Applying chronological verbs ("started at", "rose sharply to") to a timeless cross-sectional table is a hallmark of uncalibrated memorizing.',
+      'Houston şehri zaman içinde büyüyüp Tokyo’ya dönüşmez! Tabloda yıllar (2005 -> 2025 gibi) yoksa ASLA "started at (başladı)" veya "rose (yükseldi)" kelimelerini kullanmayın.',
     correctedVersion:
-      '"Whereas a mere 3% of commuters in Houston used rail, the proportion in Tokyo stood at 64%—the highest figure in the table."',
+      '"Whereas a mere 3% of commuters in Houston used rail, the proportion in Tokyo stood at 64%—the highest figure in the table." (Houston’da sadece %3 metro kullanırken, Tokyo’da bu oran %64 ile en yüksek seviyededir.)',
   },
   {
     id: 'vt-2',
-    datasetContext: 'Static Table: 2024 Commuter Transport Share Across 5 Cities',
+    datasetContext: 'Sabit Tablo (Tek Yıl - 2024): 5 Şehirde Ulaşım Oranları',
     candidateSentence:
       '"Private car reliance in Houston (86%) was nearly eight times as high as that recorded in Tokyo (11%)."',
     isLegitimate: true,
-    verdict: 'CALIBRATED BAND 8.5+ SYNTAX',
+    verdict: 'DOĞRU! (8.5 Puanlık Sabit Karşılaştırma)',
     rationale:
-      'Uses static equative comparison ("nearly eight times as high as") and a demonstrative pronoun ("that recorded in Tokyo") without implying movement over time.',
+      'Zaman akışı olmayan tabloda iki şehri kıyaslarken "nearly eight times as high as" (neredeyse 8 katı kadar yüksekti) kalıbını kullanmak tam puan getirir.',
     correctedVersion: null,
   },
   {
     id: 'vt-3',
-    datasetContext: 'Dynamic Table: Household Expenditure 2005–2025 (in US$ thousands)',
+    datasetContext: 'Zamanlı Tablo (2005–2025): Hane Harcamaları (Bin Dolar)',
     candidateSentence:
       '"In 2005 Digital was 1.2. In 2015 Digital was 2.9. In 2025 Digital was 5.8."',
     isLegitimate: false,
-    verdict: 'PENALTY: STATIC FRAMING ON DYNAMIC DATA (Band 5 TA/CC)',
+    verdict: 'ZAYIF! (5.5 Puanlık Tek Tek Sayma Hatası)',
     rationale:
-      'When a table has a chronological axis (2005 → 2015 → 2025), treating each column as an isolated static snapshot fails to synthesize the trend and dumps raw decimals without units.',
+      'Tabloda yıllar varken her yılı ayrı ayrı "2005’te şuydu, 2015’te buydu" diye saymak liste yapmaktır. Bunun yerine "2005’ten 2025’e yaklaşık 5 kat arttı" diyerek değişimi anlatmalısınız.',
     correctedVersion:
       '"Household outlays on digital communications surged nearly fivefold over the twenty-year period, climbing from $1,200 in 2005 to $5,800 by 2025."',
   },
@@ -58,17 +58,17 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            Module 01 · Examiner Calibration Briefing
+            1. Adım · Yazmaya Başlamadan Önce 3 Altın Kural
           </span>
           <span className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-200/70 text-zinc-800">
-            Target Criteria: TA · LR · GRA
+            Hedef: 5.5 Tuzaklarından Kurtulmak
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          How Cambridge Examiners Grade Table Reports
+          Tablo Sorularında Yüksek Puan Almanın 3 Sırrı
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          Unlike line graphs or bar charts where visual slopes guide the eye, tables present raw matrices of numbers. Candidates who fail to distinguish <strong>dynamic time-series tables</strong> from <strong>static snapshot tables</strong>—or who recite cells without filtering—hit immediate Band 5/6 score ceilings.
+          Çizgi grafiğinde çizginin yukarı mı aşağı mı gittiğini hemen görürsünüz; ancak <strong>tablo (table)</strong> sorularında sadece kutular içinde sayılar vardır. Kalemi elinize almadan önce şu <strong>3 basit kuralı</strong> bilmek sizi doğrudan 5.5 puandan 7.5+ seviyesine taşır.
         </p>
       </div>
 
@@ -76,10 +76,10 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
       <div className="space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-serif text-xl font-medium text-zinc-900">
-            1. The Dynamic vs. Static Protocol
+            Kural 1: Tabloda Yıllar Var mı (Zamanlı), Yok mu (Sabit)?
           </h3>
           <span className="font-mono text-xs text-rose-800 bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded">
-            Examiner Rule: Dynamic Verbs on Static Tables = Dual LR &amp; GRA Penalty
+            Uyarı: Yıl olmayan tabloda &ldquo;increased / fell&rdquo; yazmak puan kırar!
           </span>
         </div>
 
@@ -96,25 +96,22 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
                     <h4 className="font-serif text-base font-medium text-zinc-900">
                       {item.title}
                     </h4>
-                    <span className="font-mono text-[11px] uppercase px-2 py-0.5 rounded bg-zinc-100 text-zinc-700">
-                      {key === 'dynamic' ? 'Time-Series' : 'Timeless Snapshot'}
-                    </span>
                   </div>
 
-                  <div className="mt-3 space-y-2.5 text-xs text-zinc-600">
+                  <div className="mt-3 space-y-2 text-xs text-zinc-600">
                     <p>
-                      <strong className="text-zinc-900 font-medium">How to Identify: </strong>
+                      <strong className="text-zinc-900 font-medium">Nasıl Anlarım? </strong>
                       {item.identificationRule}
                     </p>
                     <p>
-                      <strong className="text-zinc-900 font-medium">Core Analytical Question: </strong>
+                      <strong className="text-zinc-900 font-medium">Nasıl Anlatmalıyım? </strong>
                       {item.analyticalQuestion}
                     </p>
                   </div>
 
                   <div className="mt-4">
                     <div className="font-mono text-[11px] uppercase tracking-wider text-emerald-800 font-semibold mb-1.5">
-                      Calibrated Lexical &amp; Syntactic Toolkit
+                      Kullanacağınız İngilizce Kelimeler:
                     </div>
                     <ul className="space-y-1.5 text-xs text-zinc-700">
                       {item.legitimateLexis.map((lex, i) => (
@@ -127,10 +124,10 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
                   </div>
                 </div>
 
-                <div className="p-3 rounded bg-zinc-50 border border-zinc-200 text-xs text-zinc-700">
+                <div className="p-3 rounded bg-rose-50/50 border border-rose-200 text-xs text-zinc-800">
                   <div className="flex items-center gap-1.5 font-mono text-[11px] uppercase text-rose-800 font-semibold mb-1">
                     <AlertTriangle className="w-3.5 h-3.5" />
-                    <span>Examiner Penalty Trap</span>
+                    <span>Sakın Bunu Yapmayın:</span>
                   </div>
                   <p className="leading-relaxed">{item.prohibitedTrap}</p>
                 </div>
@@ -144,10 +141,10 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
           <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
             <div>
               <h4 className="text-sm font-semibold text-zinc-900">
-                Interactive Calibration Check: Verb Legitimacy Audit
+                Mini Test: Bu Cümle Doğru mu, Yanlış mı?
               </h4>
               <p className="text-xs text-zinc-500">
-                Inspect how examiners score real candidate sentences against dataset time-axes.
+                3 örnek cümleye tıklayarak sınav görevlisinin neden puan verdiğini veya kırdığını görün:
               </p>
             </div>
             <div className="flex items-center gap-1.5">
@@ -162,7 +159,7 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
                       : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200'
                   }`}
                 >
-                  Case 0{idx + 1}
+                  Örnek 0{idx + 1}
                 </button>
               ))}
             </div>
@@ -192,13 +189,13 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
               </span>
             </div>
             <p className="text-xs text-zinc-700 leading-relaxed">
-              <strong>Examiner Justification: </strong>
+              <strong>Açıklama: </strong>
               {currentVerbTest.rationale}
             </p>
             {currentVerbTest.correctedVersion && (
               <div className="pt-2 border-t border-zinc-200/80 text-xs text-emerald-950">
                 <span className="font-mono uppercase text-[11px] text-emerald-800 font-semibold block mb-0.5">
-                  Band 8.5 Calibrated Rewrite:
+                  Doğru 8.5 Puanlık Yazımı:
                 </span>
                 <span className="font-serif text-sm">{currentVerbTest.correctedVersion}</span>
               </div>
@@ -211,62 +208,62 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
       <div className="space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-serif text-xl font-medium text-zinc-900">
-            2. Task Achievement Data-Selection Thresholds (The 5–8 Figure Rule)
+            Kural 2: Tablodaki Tüm Sayıları Yazmayın! (6–8 Sayı Kuralı)
           </h3>
           <span className="font-mono text-xs text-zinc-600 bg-zinc-100 border border-zinc-200 px-2.5 py-0.5 rounded">
-            15-Cell Matrix Benchmark
+            15 Hücreli Tabloda Kaç Sayı Yazılmalı?
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="border border-zinc-200 rounded bg-white p-4">
             <div className="flex items-center justify-between font-mono text-xs text-zinc-500 mb-2">
-              <span>1–4 FIGURES CITED</span>
+              <span>SADECE 1–4 SAYI YAZMAK</span>
               <span className="px-1.5 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200">
-                Band 5 TA
+                5.0 Puan (Eksik)
               </span>
             </div>
             <h4 className="font-medium text-sm text-zinc-900">
-              Under-Supported Generalization
+              Kanıtsız Anlatım
             </h4>
             <p className="text-xs text-zinc-600 mt-1.5 leading-relaxed">
-              Candidate describes trends verbally (&ldquo;housing increased while food decreased&rdquo;) without anchoring claims to baseline and terminal figures. Fails the descriptor: <em>&ldquo;adequately highlights key features.&rdquo;</em>
+              Sadece &ldquo;konut arttı, gıda azaldı&rdquo; deyip sayı vermemek puan kaybettirir. Detay paragraflarında (3. ve 4. paragraf) mutlaka sayısal kanıt vermelisiniz.
             </p>
           </div>
 
           <div className="border-2 border-zinc-900 rounded bg-white p-4">
             <div className="flex items-center justify-between font-mono text-xs text-zinc-900 font-semibold mb-2">
-              <span>5–8 STRATEGIC FIGURES</span>
+              <span>6–8 ÖNEMLİ SAYI SEÇMEK</span>
               <span className="px-1.5 py-0.5 rounded bg-zinc-900 text-white">
-                Band 7–9 Sweet Spot
+                7.5 – 9.0 Puan (İdeal!)
               </span>
             </div>
             <h4 className="font-medium text-sm text-zinc-900">
-              Selective Analytical Synthesis
+              Seçici ve Akıllı Özetleme
             </h4>
             <p className="text-xs text-zinc-600 mt-1.5 leading-relaxed">
-              Isolates the 4 non-negotiable table anchors while omitting linear midpoints:
+              15 sayıdan sadece şu 4 ana noktayı seçip ortadaki sıradan ara yılları (2015) atlayın:
             </p>
             <ul className="mt-2 space-y-1 text-xs text-zinc-800 font-medium">
-              <li>1. Global Peak &amp; Global Trough</li>
-              <li>2. Largest Absolute &amp; Proportional Shift</li>
-              <li>3. Standout Non-Linear Anomaly</li>
-              <li>4. Rank Reversal / Crossover Pair</li>
+              <li>1. En Yüksek (Zirve) ve En Düşük (Dip) Sayı</li>
+              <li>2. En Çok Artan ve En Çok Çöken Kategori</li>
+              <li>3. Tek İstisna (2015’te zirve yapan Ulaşım)</li>
+              <li>4. Sıralaması Değişen İkili (Dijital vs. Basılı)</li>
             </ul>
           </div>
 
           <div className="border border-zinc-200 rounded bg-white p-4">
             <div className="flex items-center justify-between font-mono text-xs text-zinc-500 mb-2">
-              <span>12–15+ FIGURES CITED</span>
+              <span>12–15 SAYININ HEPSİNİ YAZMAK</span>
               <span className="px-1.5 py-0.5 rounded bg-rose-50 text-rose-900 border border-rose-200">
-                Band 5/6 TA Ceiling
+                En Fazla 6.0 Puan!
               </span>
             </div>
             <h4 className="font-medium text-sm text-zinc-900">
-              Mechanical Data Dumping
+              Robot Gibi Sayı Listeleme (Data Dumping)
             </h4>
             <p className="text-xs text-zinc-600 mt-1.5 leading-relaxed">
-              Reciting every cell (including unremarkable 2015 midpoints like 16.8, 8.9, 2.9, 0.9) turns the essay into a spoken spreadsheet. Automatically caps TA at Band 6 (<em>&ldquo;details may be irrelevant, inappropriate or inaccurate&rdquo;</em>).
+              Tablodaki her kutuyu (2005, 2015, 2025) tek tek cümleye dökmek özetleme değildir. Sınav görevlisi bunu &ldquo;mekanik listeleme&rdquo; sayar ve puanınızı 6.0’da durdurur.
             </p>
           </div>
         </div>
@@ -276,10 +273,10 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
       <div className="space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-serif text-xl font-medium text-zinc-900">
-            3. Unit &amp; Header Penalty Traps
+            Kural 3: Tablo Başlığındaki Birim Tuzaklarına Düşmeyin!
           </h3>
           <span className="font-mono text-xs text-zinc-500">
-            Select a trap to inspect the examiner penalty &amp; Band 8.5 fix
+            4 tuzağa tıklayarak doğru yazımını görün:
           </span>
         </div>
 
@@ -299,13 +296,13 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
               >
                 <div
                   className={`font-mono text-[11px] uppercase ${
-                    active ? 'text-zinc-300' : 'text-zinc-500'
+                    active ? 'text-amber-300' : 'text-zinc-500'
                   }`}
                 >
-                  Header Trap
+                  Dikkat Edilecek Tuzak
                 </div>
                 <div className="text-xs font-medium mt-1 leading-snug">
-                  {trap.title.replace(/^Trap \d:\s*/, '')}
+                  {trap.title}
                 </div>
               </button>
             );
@@ -325,47 +322,31 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-3.5 rounded bg-rose-50/50 border border-rose-200 space-y-2">
               <div className="font-mono text-[11px] uppercase tracking-wider text-rose-900 font-semibold">
-                Band 5/6 Candidate Error
+                Öğrencinin Yaptığı Yanlış (5.5 Puan)
               </div>
               <p className="font-serif text-sm text-zinc-900 italic">
                 {activeTrap.band5Error}
               </p>
               <p className="text-xs text-rose-900 pt-1 border-t border-rose-200/60">
-                <strong>Penalty: </strong>
                 {activeTrap.examinerPenalty}
               </p>
             </div>
 
             <div className="p-3.5 rounded bg-emerald-50/50 border border-emerald-200 space-y-2">
               <div className="font-mono text-[11px] uppercase tracking-wider text-emerald-900 font-semibold">
-                Band 8.5 Calibrated Reporting
+                Doğru Yazımı (8.5 Puan)
               </div>
               <p className="font-serif text-sm text-zinc-900 italic">
                 {activeTrap.band8Calibration}
               </p>
               <p className="text-xs text-emerald-900 pt-1 border-t border-emerald-200/60">
-                <strong>Why It Scores Band 8+: </strong>
-                Integrates the header scale unit naturally into the noun phrase and maintains mathematical precision.
+                <strong>Neden Yüksek Puan Alır? </strong>
+                Tablo başlığındaki birimi (thousands = bin dolar) cümleye doğru yansıtır ve özneyi hatasız kurar.
               </p>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Examiner Mode Extra Calibration Note */}
-      {perspectiveMode === 'examiner' && (
-        <div className="p-4 rounded border border-zinc-300 bg-zinc-100/80 flex items-start gap-3">
-          <Info className="w-4 h-4 text-zinc-800 shrink-0 mt-0.5" />
-          <div className="text-xs text-zinc-700 space-y-1 leading-relaxed">
-            <div className="font-mono uppercase text-[11px] font-semibold text-zinc-900">
-              Examiner Trainer Calibration Note (DELTA Standard)
-            </div>
-            <p>
-              When training new examiners on Table scripts, check the candidate&apos;s treatment of the <strong>unit header</strong> in Body Paragraph 1 first. If a candidate systematically omits <em>&ldquo;thousands&rdquo;</em> across the entire response (e.g., reporting $14.2, $9.4, $1.2), treat this as a single systematic inaccuracy under TA (limiting TA to Band 6 if key features are otherwise well chosen), rather than penalizing every sentence separately. However, if they confuse <em>dynamic trend verbs</em> on a static table, apply penalties in both <strong>LR</strong> (inappropriate register/meaning) and <strong>GRA</strong> (tense/aspect control).
-            </p>
-          </div>
-        </div>
-      )}
 
       <div className="flex justify-end pt-2">
         <button
@@ -373,7 +354,7 @@ export default function ExaminerFieldGuide({ perspectiveMode, onMarkComplete }) 
           onClick={() => onMarkComplete('m1-examiner-guide')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Mark Module 01 Calibrated &amp; Continue →
+          1. Adımı Anladım, Tabloyu İncelemeye Geç →
         </button>
       </div>
     </section>

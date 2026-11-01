@@ -1,9 +1,8 @@
 import React from 'react';
 
 /**
- * Clean, distraction-free academic table renderer used across:
- * - Module 2 (TableDatasetView): 'clean' | 'highlight' | 'mask'
- * - Module 3 (FeatureSelectionLab): interactive cell tagging
+ * Clean, distraction-free academic table renderer with Turkish category translations
+ * and clear explanations of which numbers to write vs. skip.
  */
 export default function DataTableRenderer({
   dataset,
@@ -64,10 +63,10 @@ export default function DataTableRenderer({
   };
 
   const getUserTagBadge = (tag) => {
-    if (tag === 'must_report') return 'MUST REPORT';
-    if (tag === 'supporting') return 'CONTEXT';
-    if (tag === 'omit') return 'OMIT';
-    return 'UNTAGGED';
+    if (tag === 'must_report') return 'MUTLAKA YAZ';
+    if (tag === 'supporting') return 'YARDIMCI SAYI';
+    if (tag === 'omit') return 'ATLA (YAZMA)';
+    return 'SEÇMEK İÇİN TIKLA';
   };
 
   return (
@@ -78,26 +77,26 @@ export default function DataTableRenderer({
           <h4 className="font-serif text-base font-medium text-zinc-900">
             {dataset.tableTitle}
           </h4>
-          <p className="font-mono text-xs text-zinc-600 mt-0.5">
+          <p className="font-mono text-xs text-rose-800 font-semibold mt-0.5">
             {dataset.unitHeader}
           </p>
         </div>
         {viewMode === 'highlight' && (
           <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-50 border border-amber-300 text-amber-900">
-              Peak / Trough
+              En Yüksek / En Düşük
             </span>
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 border border-emerald-300 text-emerald-900">
-              Major Shift
+              5 Kat Sıçrama
             </span>
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-rose-50 border border-rose-300 text-rose-900">
-              2015 Anomaly
+              2015 İstisnası
             </span>
           </div>
         )}
         {viewMode === 'mask' && (
-          <div className="text-[11px] font-mono text-zinc-600 bg-zinc-200/70 px-2 py-0.5 rounded">
-            Examiner Mask: 7 Core Figures Highlighted | 4 Midpoints Crossed Out
+          <div className="text-[11px] font-mono text-zinc-700 bg-zinc-200/70 px-2 py-0.5 rounded">
+            Siyah Kutular: Yazılacak 7 Ana Sayı | Üstü Çizili Olanlar: Yazılmayacak Ara Yıllar
           </div>
         )}
       </div>
@@ -120,7 +119,7 @@ export default function DataTableRenderer({
               ))}
               {showRowTotals && (
                 <th className="py-2.5 px-4 text-right font-semibold bg-zinc-100 text-zinc-600 w-44">
-                  Net 20-Yr Shift
+                  20 Yıllık Değişim
                 </th>
               )}
             </tr>
@@ -136,7 +135,14 @@ export default function DataTableRenderer({
               return (
                 <tr key={row.id} className="group">
                   <td className="py-3 px-4 font-medium text-zinc-900 border-r border-zinc-200 bg-zinc-50/40">
-                    <div>{row.category}</div>
+                    <div>
+                      {row.category}{' '}
+                      {row.categoryTR && (
+                        <span className="text-xs font-normal text-zinc-500">
+                          ({row.categoryTR})
+                        </span>
+                      )}
+                    </div>
                     {viewMode !== 'clean' && !interactive && (
                       <div className="text-[11px] font-normal text-zinc-500 mt-0.5">
                         {row.trajectorySummary}
@@ -169,22 +175,27 @@ export default function DataTableRenderer({
                             : ''
                         }`}
                       >
-                        <div className="text-base leading-none">{cell.value}</div>
+                        <div className="text-base leading-none">
+                          {cell.value}
+                          <span className="text-[10px] opacity-60 ml-1">
+                            ({cell.trueDollarValue})
+                          </span>
+                        </div>
 
                         {/* Non-interactive Highlight / Mask Sub-labels */}
                         {!interactive && viewMode !== 'clean' && (
                           <div
                             className={`text-[10px] mt-1 font-sans tracking-tight ${
                               viewMode === 'mask' && cell.status === 'must_report'
-                                ? 'text-zinc-200'
+                                ? 'text-amber-300 font-medium'
                                 : 'text-zinc-500'
                             }`}
                           >
                             {cell.status === 'must_report'
-                              ? cell.featureType
+                              ? `★ ${cell.featureType}`
                               : cell.status === 'supporting'
-                              ? 'Context'
-                              : 'Omit midpoint'}
+                              ? 'Yardımcı Sayı'
+                              : 'Ara Yıl (Atla)'}
                           </div>
                         )}
 
@@ -193,7 +204,7 @@ export default function DataTableRenderer({
                           <div
                             className={`text-[10px] mt-1 font-mono tracking-wider uppercase ${
                               userTag === 'must_report'
-                                ? 'text-zinc-300'
+                                ? 'text-amber-300'
                                 : userTag === 'supporting'
                                 ? 'text-zinc-700'
                                 : userTag === 'omit'
@@ -215,7 +226,7 @@ export default function DataTableRenderer({
                         }`}
                       >
                         {sign}
-                        {diff}k ({sign}
+                        {diff}k $ ({sign}
                         {pct}%)
                       </span>
                     </td>

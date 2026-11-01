@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CURRICULUM_MODULES } from './data/bandCriteria';
 import EditorialHeader from './components/layout/EditorialHeader';
 import ModuleSidebar from './components/layout/ModuleSidebar';
+import EssayBlueprintBanner from './components/shared/EssayBlueprintBanner';
 
 // 11 Modular Curriculum Components
 import ExaminerFieldGuide from './components/examiner/ExaminerFieldGuide';
@@ -134,6 +135,9 @@ export default function App() {
 
         <main className="flex-1 min-w-0 px-4 sm:px-8 lg:px-12 py-8 sm:py-10">
           <div className="max-w-4xl mx-auto">
+            {/* Persistent Quick-Start 4-Paragraph Essay Blueprint Banner */}
+            <EssayBlueprintBanner onJumpToModule={handleSelectModule} />
+
             {displayMode === 'StepFocus' ? (
               <div className="space-y-10">
                 {renderModuleComponent(activeModuleId)}
@@ -148,7 +152,7 @@ export default function App() {
                     >
                       <ChevronLeft className="w-4 h-4" />
                       <span>
-                        Prev: {prevModule.number} · {prevModule.shortTitle}
+                        Önceki: {prevModule.number} · {prevModule.shortTitle}
                       </span>
                     </button>
                   ) : (
@@ -162,7 +166,7 @@ export default function App() {
                       className="inline-flex items-center gap-2 text-xs font-mono text-zinc-600 hover:text-zinc-900 transition-colors"
                     >
                       <span>
-                        Next: {nextModule.number} · {nextModule.shortTitle}
+                        Sonraki: {nextModule.number} · {nextModule.shortTitle}
                       </span>
                       <ChevronRight className="w-4 h-4" />
                     </button>

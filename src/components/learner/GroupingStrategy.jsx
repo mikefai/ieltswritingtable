@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Check, X, ArrowRight, RotateCcw, KeyRound } from 'lucide-react';
+import { Check, X, RotateCcw, KeyRound } from 'lucide-react';
 import { PRIMARY_TABLE_DATASET } from '../../data/datasets';
 
 export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
@@ -61,17 +61,17 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            Module 04 · Grouping Strategy Lab
+            4. Adım · Paragrafları Gruplama (Body 1 &amp; Body 2)
           </span>
           <span className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-200/70 text-zinc-800">
-            Solves Breakdown #2: Mechanical Row-by-Row Listing (CC Penalty)
+            Hata #2 Çözümü: Satır Satır Sırayla Yazma!
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          Analytical Macro-Clustering vs. The Linear Walk
+          5 Satırı 2 Detay Paragrafına Nasıl Böleriz?
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          Examiners immediately spot a Band 5.5 script by its paragraph transitions: <em>&ldquo;First row is Housing... Second row is Food... Third row is Transport...&rdquo;</em> To unlock Band 8+ in Coherence &amp; Cohesion, you must cluster the 5 categories into <strong>two analytical body paragraphs</strong> based on expenditure scale and trajectory.
+          Yazımızın 1. paragrafı Giriş, 2. paragrafı ise Overview (Genel Bakış) olacak. Peki sayıları vereceğimiz <strong>3. Paragraf (Body 1)</strong> ve <strong>4. Paragrafta (Body 2)</strong> bu 5 kategoriyi nasıl paylaşacağız? Sakın yukarıdan aşağıya sırayla anlatmayın; kategorileri <strong>büyüklüklerine göre 2 gruba</strong> ayırın!
         </p>
       </div>
 
@@ -80,48 +80,48 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
         <div className="border border-rose-200 rounded bg-white p-5 space-y-3">
           <div className="flex items-center justify-between">
             <span className="font-mono text-xs uppercase tracking-wider px-2 py-0.5 rounded bg-rose-50 text-rose-900 border border-rose-200 font-semibold">
-              Band 5.5 Trap · Mechanical Linear Walk
+              Yanlış Yöntem (5.5 Puan)
             </span>
-            <span className="font-mono text-xs text-rose-800">CC Capped at 6.0</span>
+            <span className="font-mono text-xs text-rose-800">Sırayla Tek Tek Saymak</span>
           </div>
           <h3 className="font-serif text-lg font-medium text-zinc-900">
-            Row-by-Row Recitation (No Synthesis)
+            &ldquo;First... Second... Third... Finally...&rdquo;
           </h3>
           <div className="p-3.5 rounded bg-zinc-50 border border-zinc-200 font-serif text-xs sm:text-sm text-zinc-700 space-y-2 italic">
             <p>
-              &ldquo;First, Housing was $14.2k in 2005, $16.8k in 2015, and $21.5k in 2025. Second, Food was $9.4k in 2005 and fell to $8.1k in 2025. Third, Transport went from $7.6k to $8.5k and then $6.2k. Fourth, Digital rose from $1.2k to $5.8k. Finally, Print fell from $1.8k to $0.3k.&rdquo;
+              &ldquo;First, Housing was $14.2k in 2005 and $21.5k in 2025. Second, Food was $9.4k and fell to $8.1k. Third, Transport went from $7.6k to $8.5k and $6.2k. Fourth, Digital rose from $1.2k to $5.8k. Finally, Print fell from $1.8k to $0.3k.&rdquo;
             </p>
           </div>
           <p className="text-xs text-zinc-600 leading-relaxed">
-            <strong>Why Examiners Penalize This:</strong> The candidate never compares one row against another. Each sentence is an isolated silo linked by mechanical ordinal sequencers (<em>First, Second, Third, Finally</em>).
+            <strong>Neden Puan Kırılır?</strong> Öğrenci kategorileri birbiriyle hiç karşılaştırmamış; sadece tablodaki 5 satırı alt alta okumuş.
           </p>
         </div>
 
         <div className="border border-emerald-200 rounded bg-white p-5 space-y-3">
           <div className="flex items-center justify-between">
             <span className="font-mono text-xs uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold">
-              Band 8.5 Architecture · Logical Clustering
+              Doğru Yöntem (8.5 Puan)
             </span>
-            <span className="font-mono text-xs text-emerald-800">Full CC &amp; TA Credit</span>
+            <span className="font-mono text-xs text-emerald-800">2 Mantıklı Grup</span>
           </div>
           <h3 className="font-serif text-lg font-medium text-zinc-900">
-            Two-Paragraph Scale &amp; Trajectory Split
+            Büyük Harcamalar (3. Paragraf) vs. Küçük/Zıt Harcamalar (4. Paragraf)
           </h3>
           <div className="space-y-2 text-xs text-zinc-700">
             <div className="p-3 rounded bg-zinc-50 border border-zinc-200">
               <div className="font-mono uppercase text-[11px] font-semibold text-zinc-900">
-                Body Paragraph 1: High-Outlay Core Staples ($6,200 – $21,500)
+                3. Paragraf (Body 1): Büyük Yaşam Giderleri ($6,200 – $21,500)
               </div>
               <p className="mt-1">
-                Clusters <strong>Housing</strong> (surging dominant cost), <strong>Food</strong> (steady runner-up), and <strong>Transport</strong> (2015 non-linear anomaly). Allows direct comparison that Housing alone exceeded the rest of the table by 2025.
+                Hane bütçesinin büyük kısmını götüren <strong>Konut</strong>, <strong>Gıda</strong> ve <strong>Ulaşım</strong> burada anlatılır.
               </p>
             </div>
             <div className="p-3 rounded bg-zinc-50 border border-zinc-200">
               <div className="font-mono uppercase text-[11px] font-semibold text-zinc-900">
-                Body Paragraph 2: Low-Base Divergent Sectors ($300 – $5,800)
+                4. Paragraf (Body 2): Küçük Ama Zıt İkili ($300 – $5,800)
               </div>
               <p className="mt-1">
-                Pairs <strong>Digital &amp; Telecoms</strong> with <strong>Print Media &amp; Postage</strong> to showcase their inverse trajectories (5x surge vs. 6x collapse) and rank reversal using <em>respectively</em>.
+                Bütçede küçük yer tutan ama tam zıt yönde hareket eden <strong>Dijital İletişim</strong> (5 kat arttı) ile <strong>Basılı Medya</strong> (altıda birine çöktü) burada kıyaslanır.
               </p>
             </div>
           </div>
@@ -133,20 +133,20 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200 pb-4">
           <div>
             <h3 className="font-serif text-lg font-medium text-zinc-900">
-              Interactive Paragraph Clustering Workspace
+              Uygulama: Kategorileri 3. ve 4. Paragrafa Yerleştirin
             </h3>
             <p className="text-xs text-zinc-600 mt-0.5">
-              Assign each of the 5 expenditure categories to either <strong>Body Paragraph 1</strong> or <strong>Body Paragraph 2</strong> to validate your structural plan.
+              Her satırın karşısındaki butonlardan <strong>3. Paragraf (Body 1)</strong> veya <strong>4. Paragraf (Body 2)</strong> seçeneğine tıklayın:
             </p>
           </div>
           <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={loadRecommendedGrouping}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono bg-zinc-100 hover:bg-zinc-200 text-zinc-800 border border-zinc-300"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono bg-zinc-900 text-white hover:bg-zinc-800"
             >
               <KeyRound className="w-3.5 h-3.5" />
-              <span>Show Band 8.5 Split</span>
+              <span>Doğru Gruplamayı Göster</span>
             </button>
             <button
               type="button"
@@ -154,7 +154,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
               className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-mono text-zinc-600 hover:text-zinc-900 border border-zinc-200"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              <span>Reset</span>
+              <span>Sıfırla</span>
             </button>
           </div>
         </div>
@@ -172,7 +172,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
                 <div className="space-y-0.5 min-w-0 flex-1">
                   <div className="flex items-center gap-3 flex-wrap">
                     <span className="font-medium text-sm text-zinc-900">
-                      {row.category}
+                      {row.category} ({row.categoryTR})
                     </span>
                     <span className="font-mono text-xs text-zinc-500 tabular-nums">
                       2005: ${row.cells.y2005.value}k → 2015: ${row.cells.y2015.value}k → 2025: ${row.cells.y2025.value}k
@@ -205,7 +205,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
                         : 'bg-white text-zinc-700 border-zinc-300 hover:bg-zinc-100'
                     }`}
                   >
-                    Body Paragraph 1 (Core Staples)
+                    3. Paragraf (Büyük Harcamalar)
                   </button>
                   <button
                     type="button"
@@ -216,7 +216,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
                         : 'bg-white text-zinc-700 border-zinc-300 hover:bg-zinc-100'
                     }`}
                   >
-                    Body Paragraph 2 (Tech vs. Print)
+                    4. Paragraf (Dijital vs. Basılı)
                   </button>
                 </div>
               </div>
@@ -235,13 +235,13 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
           >
             <div className="font-mono uppercase font-semibold mb-1">
               {correctCount === 5
-                ? '5/5 Analytical Clustering Verified (Band 8.5 Coherence & Cohesion)'
-                : `Clustering Alignment: ${correctCount}/5 Categories Matched`}
+                ? 'Tebrikler! 5/5 Doğru Paragraf Planı (Band 8.5)'
+                : `Eşleşme: ${correctCount}/5 Kategori Doğru`}
             </div>
             <p>
               {correctCount === 5
-                ? 'Your paragraph architecture separates high-volume living staples (Housing, Food, Transport) from low-volume opposing media/tech sectors (Digital vs. Print). This creates natural topic sentences and prevents linear listing.'
-                : 'Review the rationale notes above. Grouping Digital ($1.2k → $5.8k) and Print Media ($1.8k → $0.3k) together in Body Paragraph 2 allows you to contrast their rank reversal in two crisp sentences.'}
+                ? 'Harika! Şimdi 3. paragrafta Konut, Gıda ve Ulaşım’ı; 4. paragrafta ise Dijital ve Basılı Medya arasındaki zıtlığı anlatmaya hazırsınız.'
+                : 'Yukarıdaki açıklamalara göre yanlış grupta olan kategorileri düzeltin.'}
             </p>
           </div>
         )}
@@ -253,7 +253,7 @@ export default function GroupingStrategy({ perspectiveMode, onMarkComplete }) {
           onClick={() => onMarkComplete('m4-grouping-strategy')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Confirm Paragraph Strategy &amp; Continue →
+          Gruplamayı Tamamladım, Overview Yazımına Geç →
         </button>
       </div>
     </section>

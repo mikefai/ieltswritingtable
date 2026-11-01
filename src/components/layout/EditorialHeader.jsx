@@ -23,7 +23,7 @@ export default function EditorialHeader({
             type="button"
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-1.5 rounded text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/60 transition-colors"
-            title={sidebarOpen ? 'Collapse curriculum index' : 'Expand curriculum index'}
+            title={sidebarOpen ? 'Menüyü Gizle' : 'Adım Menüsünü Aç'}
             aria-label="Toggle curriculum index"
           >
             {sidebarOpen ? (
@@ -34,14 +34,14 @@ export default function EditorialHeader({
           </button>
 
           <div className="flex items-baseline gap-2.5 truncate">
-            <span className="font-mono text-[11px] uppercase tracking-widest px-1.5 py-0.5 rounded bg-zinc-200/80 text-zinc-800 font-medium">
+            <span className="font-mono text-[11px] uppercase tracking-widest px-1.5 py-0.5 rounded bg-zinc-900 text-white font-medium">
               IELTS Task 1
             </span>
             <h1 className="font-serif text-base sm:text-lg font-medium text-zinc-900 truncate">
-              Interpreting &amp; Reporting Tables
+              Tablo (Table) Yazma Rehberi
             </h1>
             <span className="hidden lg:inline-block text-xs text-zinc-500 border-l border-zinc-300 pl-2.5">
-              DELTA Examiner &amp; Candidate Masterclass
+              Adım Adım 4 Paragraf Şablonu &amp; Uygulama
             </span>
           </div>
         </div>
@@ -49,17 +49,17 @@ export default function EditorialHeader({
         {/* Center: Quiet Step Progress */}
         <div className="hidden md:flex items-center gap-3 text-xs text-zinc-500">
           <span className="font-mono tabular-nums">
-            Module {String(activeModuleIndex + 1).padStart(2, '0')}/{String(totalModules).padStart(2, '0')}
+            Adım {String(activeModuleIndex + 1).padStart(2, '0')}/{String(totalModules).padStart(2, '0')}
           </span>
-          <div className="w-24 h-1 bg-zinc-200 rounded-full overflow-hidden">
+          <div className="w-24 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
             <div
-              className="h-full bg-zinc-800 transition-all duration-300"
+              className="h-full bg-zinc-900 transition-all duration-300"
               style={{ width: `${progressPct}%` }}
             />
           </div>
           {completedModulesCount > 0 && (
-            <span className="font-mono text-[11px] text-zinc-600 bg-zinc-100 border border-zinc-200 px-1.5 py-0.5 rounded">
-              {completedModulesCount} Lab{completedModulesCount === 1 ? '' : 's'} Verified
+            <span className="font-mono text-[11px] text-emerald-900 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
+              {completedModulesCount} Adım Tamamlandı
             </span>
           )}
         </div>
@@ -73,17 +73,17 @@ export default function EditorialHeader({
               setDisplayMode(displayMode === 'StepFocus' ? 'Continuous' : 'StepFocus')
             }
             className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-zinc-900 bg-white border border-zinc-200 rounded transition-colors"
-            title="Switch between single-module focus view and continuous full-syllabus view"
+            title="Tek adım görünümü veya tüm sayfayı alt alta görme modu"
           >
             {displayMode === 'StepFocus' ? (
               <>
                 <FileText className="w-3.5 h-3.5 text-zinc-500" />
-                <span>Focus View</span>
+                <span>Adım Adım Görünüm</span>
               </>
             ) : (
               <>
                 <Layers className="w-3.5 h-3.5 text-zinc-500" />
-                <span>Full Syllabus</span>
+                <span>Tüm Adımlar Alt Alta</span>
               </>
             )}
           </button>
@@ -104,7 +104,7 @@ export default function EditorialHeader({
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Learner Mode</span>
+              <span>Öğrenci Modu (Pratik)</span>
             </button>
             <button
               type="button"
@@ -116,7 +116,7 @@ export default function EditorialHeader({
               }`}
             >
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Examiner Calibration</span>
+              <span>Cevap Anahtarı / Hoca Modu</span>
             </button>
           </div>
         </div>

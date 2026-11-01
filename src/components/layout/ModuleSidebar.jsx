@@ -24,21 +24,21 @@ export default function ModuleSidebar({
         {/* Perspective Status Banner */}
         <div className="px-3 py-2.5 rounded border border-zinc-200 bg-white">
           <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-zinc-500">
-            <span>Active Lens</span>
+            <span>Seçili Mod</span>
             <span
               className={`px-1.5 py-0.5 rounded font-semibold ${
                 perspectiveMode === 'examiner'
                   ? 'bg-zinc-900 text-zinc-50'
-                  : 'bg-zinc-100 text-zinc-800'
+                  : 'bg-emerald-100 text-emerald-900'
               }`}
             >
-              {perspectiveMode === 'examiner' ? 'EXAMINER' : 'CANDIDATE'}
+              {perspectiveMode === 'examiner' ? 'CEVAP ANAHTARI' : 'ÖĞRENCİ PRATİK'}
             </span>
           </div>
           <p className="mt-1.5 text-xs text-zinc-600 leading-relaxed">
             {perspectiveMode === 'examiner'
-              ? 'Showing official Cambridge penalty thresholds, band ceilings, and full answer keys.'
-              : 'Interactive drills active. Tag cells, cluster paragraphs, and build zero-number overviews.'}
+              ? 'Tüm alıştırmaların doğru cevapları ve sınav görevlisi (examiner) puanlama sırları açık.'
+              : '1. adımdan başlayarak sırayla ilerleyin. Her adımda tabloyu nasıl yazacağınızı uygulamalı öğreneceksiniz.'}
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export default function ModuleSidebar({
                       >
                         <span
                           className={`font-mono text-xs mt-0.5 tabular-nums ${
-                            isActive ? 'text-zinc-400' : 'text-zinc-400 group-hover:text-zinc-600'
+                            isActive ? 'text-amber-300' : 'text-zinc-400 group-hover:text-zinc-600'
                           }`}
                         >
                           {mod.number}

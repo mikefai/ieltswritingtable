@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye, Sparkles, Filter, Table2, Info } from 'lucide-react';
+import { Eye, Sparkles, Filter, Info } from 'lucide-react';
 import {
   PRIMARY_TABLE_DATASET,
   STATIC_SNAPSHOT_DATASET,
@@ -7,9 +7,9 @@ import {
 import DataTableRenderer from './DataTableRenderer';
 
 export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
-  const [viewMode, setViewMode] = useState('clean'); // 'clean' | 'highlight' | 'mask'
+  const [viewMode, setViewMode] = useState('highlight'); // Default to 'highlight' so learner immediately sees what matters!
   const [activeDatasetType, setActiveDatasetType] = useState('dynamic'); // 'dynamic' | 'static'
-  const [showRowTotals, setShowRowTotals] = useState(false);
+  const [showRowTotals, setShowRowTotals] = useState(true);
 
   const isDynamic = activeDatasetType === 'dynamic';
 
@@ -19,7 +19,7 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
       <div className="border-b border-zinc-200 pb-6">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-            Module 02 · Synthetic Task &amp; Dataset Explorer
+            2. Adım · Örnek Sınav Sorusu ve Tablo Analizi
           </span>
           <div className="inline-flex items-center p-0.5 rounded bg-zinc-200/80 border border-zinc-300 text-xs">
             <button
@@ -29,7 +29,7 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
                 isDynamic ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
-              Primary: Dynamic Table (2005–2025)
+              Ana Örnek: Zamanlı Tablo (2005–2025)
             </button>
             <button
               type="button"
@@ -38,15 +38,15 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
                 !isDynamic ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
-              Comparison: Static Snapshot (2024)
+              Ek Örnek: Sabit Tablo (2024 Şehirler)
             </button>
           </div>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-medium text-zinc-900 mt-2">
-          Seeing Through the Matrix: Raw Data vs. Examiner Filter
+          Tabloya Bakınca Neleri Görmeliyim?
         </h2>
         <p className="text-zinc-600 text-sm sm:text-base mt-2 max-w-3xl leading-relaxed">
-          Before writing a single word, a Band 8+ candidate mentally transforms a raw 15-cell table into 6–8 high-signal anchor figures. Toggle between <strong>Clean View</strong>, <strong>Key Feature Highlight</strong>, and the <strong>Examiner Key-Feature Mask</strong> below.
+          Aşağıdaki tablo boyunca birlikte adım adım 8.5 puanlık bir kompozisyon yazacağız. Tablonun üstündeki <strong>3 görünüm butonuna</strong> tıklayarak ham tablonun nasıl <strong>7 önemli sayıya</strong> indirgendiğini görün.
         </p>
       </div>
 
@@ -55,14 +55,14 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
           {/* Official Exam Prompt Box */}
           <div className="border border-zinc-300 rounded bg-white p-5 space-y-2">
             <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-zinc-500">
-              <span>IELTS Academic Writing Task 1 · Official Prompt Rubric</span>
-              <span>Recommended Time: 20 Minutes · Min 150 Words</span>
+              <span>IELTS Sınav Sorusu (Task 1 Prompt)</span>
+              <span>Süre: 20 Dakika · En Az 150 Kelime</span>
             </div>
             <p className="font-serif text-base sm:text-lg text-zinc-900 font-medium pt-1">
               {PRIMARY_TABLE_DATASET.promptRubric}
             </p>
-            <p className="text-sm text-zinc-700 italic">
-              {PRIMARY_TABLE_DATASET.taskInstruction}
+            <p className="text-xs text-zinc-600">
+              <strong>Türkçesi:</strong> {PRIMARY_TABLE_DATASET.promptRubricTR}
             </p>
           </div>
 
@@ -79,7 +79,7 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
                 }`}
               >
                 <Eye className="w-3.5 h-3.5" />
-                <span>1. Clean Exam View</span>
+                <span>1. Sınavdaki Ham Hali</span>
               </button>
 
               <button
@@ -92,7 +92,7 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>2. Key Feature Highlight</span>
+                <span>2. Önemli Sayıları Renklendir</span>
               </button>
 
               <button
@@ -105,7 +105,7 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
                 }`}
               >
                 <Filter className="w-3.5 h-3.5" />
-                <span>3. Examiner Key-Feature Mask</span>
+                <span>3. Gereksiz Sayıları Çiz (Sadece Yazılacaklar)</span>
               </button>
             </div>
 
@@ -116,7 +116,7 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
                 onChange={(e) => setShowRowTotals(e.target.checked)}
                 className="rounded border-zinc-300 text-zinc-900 focus:ring-zinc-900"
               />
-              <span className="font-mono">Show Margin Math (20-Yr Net Shift)</span>
+              <span className="font-mono">20 Yıllık Değişimi Göster</span>
             </label>
           </div>
 
@@ -128,51 +128,48 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
           />
 
           {/* Scale Multiplier Callout */}
-          <div className="p-4 rounded border border-amber-300 bg-amber-50/60 flex items-start gap-3">
+          <div className="p-4 rounded border border-amber-300 bg-amber-50/70 flex items-start gap-3">
             <Info className="w-4 h-4 text-amber-900 shrink-0 mt-0.5" />
             <div className="text-xs text-amber-950 leading-relaxed">
-              <strong className="font-mono uppercase tracking-wider">
-                Scale Header Alert:{' '}
-              </strong>
               {PRIMARY_TABLE_DATASET.unitMultiplierNote}
             </div>
           </div>
 
-          {/* Commentary Panel depending on ViewMode / Perspective */}
+          {/* 3 Simple Takeaways in Turkish */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="border border-zinc-200 rounded bg-white p-4">
-              <div className="font-mono text-[11px] uppercase text-zinc-500">
-                Macro Extremes (2 Cells)
+              <div className="font-mono text-[11px] uppercase text-amber-800 font-semibold">
+                1. En Yüksek ve En Düşük
               </div>
               <h4 className="font-medium text-sm text-zinc-900 mt-1">
-                $21,500 Peak vs. $300 Trough
+                Konut ($21,500) vs. Basılı Medya ($300)
               </h4>
               <p className="text-xs text-zinc-600 mt-1.5 leading-relaxed">
-                <strong>Housing (2025)</strong> records the highest single figure in the table ($21,500), whereas <strong>Print Media (2025)</strong> finishes at the global low of just $300 (0.3 thousand).
+                Tablodaki en büyük sayı 2025’te <strong>Konut ($21,500)</strong>, en küçük sayı ise 2025’te <strong>Basılı Medya ($300)</strong>. Bu ikisini mutlaka yazacağız.
               </p>
             </div>
 
             <div className="border border-zinc-200 rounded bg-white p-4">
-              <div className="font-mono text-[11px] uppercase text-zinc-500">
-                Proportional Surge &amp; Reversal (3 Cells)
+              <div className="font-mono text-[11px] uppercase text-emerald-800 font-semibold">
+                2. En Büyük Sıçrama (5 Kat)
               </div>
               <h4 className="font-medium text-sm text-zinc-900 mt-1">
-                Digital ($1.2k → $5.8k) vs. Print ($1.8k)
+                Dijital İletişim ($1,200 → $5,800)
               </h4>
               <p className="text-xs text-zinc-600 mt-1.5 leading-relaxed">
-                In 2005, Digital trailed Print Media ($1,200 vs. $1,800). By 2025, Digital surged nearly fivefold to $5,800 while Print shrank by five-sixths.
+                2005’te en küçük kalem olan <strong>Dijital ($1,200)</strong>, yaklaşık <strong>5 katına çıkarak $5,800</strong> olmuş ve Basılı Medya’yı ($1,800 → $300) geride bırakmıştır.
               </p>
             </div>
 
             <div className="border border-zinc-200 rounded bg-white p-4">
-              <div className="font-mono text-[11px] uppercase text-zinc-500">
-                Non-Linear Anomaly (2 Cells)
+              <div className="font-mono text-[11px] uppercase text-rose-800 font-semibold">
+                3. Tek İstisna (2015 Zirvesi)
               </div>
               <h4 className="font-medium text-sm text-zinc-900 mt-1">
-                Transport’s 2015 Inflection ($8,500)
+                Ulaşım ($7,600 → $8,500 → $6,200)
               </h4>
               <p className="text-xs text-zinc-600 mt-1.5 leading-relaxed">
-                Every row moves monotonically except <strong>Transport &amp; Travel</strong>, which rises from $7,600 to a 2015 peak of $8,500 before falling to $6,200. That is why 2015 is reported <em>only</em> for Transport.
+                Diğer tüm satırlar hep aynı yönde giderken sadece <strong>Ulaşım</strong> 2015’te <strong>$8,500 ile zirve yapıp</strong> sonra düşmüştür. Bu yüzden 2015 yılını sadece Ulaşım için yazacağız!
               </p>
             </div>
           </div>
@@ -182,14 +179,14 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
         <div className="space-y-6">
           <div className="border border-zinc-300 rounded bg-white p-5 space-y-2">
             <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-zinc-500">
-              <span>Supplementary Static Prompt · Cross-Sectional Snapshot</span>
-              <span>Zero Chronological Axis (Single Census Year: 2024)</span>
+              <span>İkinci Örnek · Sabit (Static) Tablo</span>
+              <span>Tek Yıl (2024) — Zaman Değişimi Yok!</span>
             </div>
             <p className="font-serif text-base sm:text-lg text-zinc-900 font-medium pt-1">
               {STATIC_SNAPSHOT_DATASET.promptRubric}
             </p>
-            <p className="text-sm text-zinc-700 italic">
-              {STATIC_SNAPSHOT_DATASET.taskInstruction}
+            <p className="text-xs text-zinc-600">
+              <strong>Türkçesi:</strong> {STATIC_SNAPSHOT_DATASET.promptRubricTR}
             </p>
           </div>
 
@@ -198,7 +195,7 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
               <h4 className="font-serif text-base font-medium text-zinc-900">
                 {STATIC_SNAPSHOT_DATASET.tableTitle}
               </h4>
-              <p className="font-mono text-xs text-zinc-600 mt-0.5">
+              <p className="font-mono text-xs text-rose-800 font-semibold mt-0.5">
                 {STATIC_SNAPSHOT_DATASET.unitHeader}
               </p>
             </div>
@@ -236,7 +233,7 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
                             : ''
                         }`}
                       >
-                        {row.rail}%
+                        %{row.rail}
                       </td>
                       <td
                         className={`py-3 px-4 text-right font-mono tabular-nums border-r border-zinc-200 ${
@@ -245,10 +242,10 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
                             : ''
                         }`}
                       >
-                        {row.car}%
+                        %{row.car}
                       </td>
                       <td className="py-3 px-4 text-right font-mono tabular-nums border-r border-zinc-200">
-                        {row.bus}%
+                        %{row.bus}
                       </td>
                       <td
                         className={`py-3 px-4 text-right font-mono tabular-nums border-r border-zinc-200 ${
@@ -257,10 +254,10 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
                             : ''
                         }`}
                       >
-                        {row.active}%
+                        %{row.active}
                       </td>
                       <td className="py-3 px-4 text-right font-mono tabular-nums bg-zinc-50 font-medium text-zinc-900">
-                        {row.duration} mins
+                        {row.duration} dk
                       </td>
                     </tr>
                   ))}
@@ -269,25 +266,9 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
             </div>
           </div>
 
-          <div className="p-4 rounded border border-zinc-300 bg-white text-xs text-zinc-700 space-y-1.5">
-            <div className="font-mono uppercase text-[11px] font-semibold text-zinc-900">
-              Examiner Structural Comparison: Static vs. Dynamic
-            </div>
-            <p>
-              Notice how the final column (<strong>Avg. Commute in mins</strong>) uses a completely different unit from the first four columns (<strong>% of workforce</strong>). You will practice writing a full timed response on this exact dataset in <strong>Module 10 (Timed Simulator)</strong>.
-            </p>
+          <div className="p-4 rounded border border-amber-300 bg-amber-50/70 text-xs text-amber-950 space-y-1">
+            <p>{STATIC_SNAPSHOT_DATASET.unitMultiplierNote}</p>
           </div>
-        </div>
-      )}
-
-      {perspectiveMode === 'examiner' && (
-        <div className="p-4 rounded border border-zinc-300 bg-zinc-100/80 text-xs text-zinc-700 space-y-1">
-          <div className="font-mono uppercase text-[11px] font-semibold text-zinc-900">
-            Examiner 30-Second Scan Protocol
-          </div>
-          <p>
-            When evaluating the primary Household Expenditure table, an examiner checks whether the candidate noticed that <strong>Housing ($21,500)</strong> exceeds the other four categories combined in 2025 ($20,400), and whether they isolated <strong>Transport&apos;s 2015 peak ($8,500)</strong>. Scripts that treat 2015 as equally important across all five rows cannot exceed Band 6 in Task Achievement.
-          </p>
         </div>
       )}
 
@@ -297,7 +278,7 @@ export default function TableDatasetView({ perspectiveMode, onMarkComplete }) {
           onClick={() => onMarkComplete('m2-dataset-explorer')}
           className="px-4 py-2 rounded bg-zinc-900 text-white text-xs font-mono uppercase tracking-wider hover:bg-zinc-800 transition-colors"
         >
-          Mark Module 02 Explored &amp; Continue →
+          Tabloyu İnceledim, Sayı Seçme Uygulamasına Geç →
         </button>
       </div>
     </section>

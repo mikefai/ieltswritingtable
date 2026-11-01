@@ -1,5 +1,69 @@
-// Centralized pedagogical datasets, cell-level key feature solutions,
-// Band 8.5 annotated benchmark model, and Band 5.5 error clinic data.
+// Centralized pedagogical datasets with plain-English & Turkish (TR) coaching,
+// 4-paragraph fill-in-the-blank essay templates, Band 8.5 model translations,
+// and Band 5.5 error clinic explanations.
+
+export const FOUR_PARAGRAPH_BLUEPRINT = [
+  {
+    paragraphNumber: 1,
+    title: '1. Paragraf: Giriş (Introduction)',
+    sentenceCount: '1 Cümle (~20–25 kelime)',
+    whatToDoTR:
+      'Soru kökündeki cümleyi kelimeleri değiştirerek (eş anlamlılarıyla) yeniden yaz. Asla kendi yorumunu katma ve sayı yazma.',
+    whatToDoEN:
+      'Rewrite the question prompt in your own words in 1 sentence. Do not copy phrases directly and do not include numbers.',
+    template:
+      'The table compares how much [Kimler: households in a European country] spent annually on [Kaç kategori: five different categories] in [Yıllar: 2005, 2015, and 2025].',
+    exampleEN:
+      'The table compares how much households in a European nation allocated annually to five distinct expenditure brackets at ten-year intervals between 2005 and 2025.',
+    exampleTR:
+      'Tablo, bir Avrupa ülkesindeki hanelerin 2005 ve 2025 yılları arasında onar yıllık aralıklarla beş farklı harcama kategorisine yıllık ne kadar bütçe ayırdığını karşılaştırmaktadır.',
+  },
+  {
+    paragraphNumber: 2,
+    title: '2. Paragraf: Genel Bakış (Overview) — EN ÖNEMLİ PARAGRAF!',
+    sentenceCount: '2 Cümle (~40–45 kelime) · SIFIR SAYI!',
+    whatToDoTR:
+      'Tabloya uzaktan bakınca görünen en büyük resmi 2 cümlede özetle. KURAL: Bu paragrafta kesinlikle rakam ($14,200 vb.) veya yüzde YAZILMAZ! 1. cümlede en büyük harcamayı ve genel yönü söyle; 2. cümlede en hızlı artan/azalan kategoriyi söyle.',
+    whatToDoEN:
+      'Summarize the big picture in 2 sentences with ZERO numbers. Sentence 1: Who is the biggest overall, and which rows went up/down? Sentence 2: Which row changed the most dramatically?',
+    template:
+      'Overall, [En büyük kategori] accounted for the largest expense throughout the period, whereas spending on [Azalan kategoriler] declined. Notably, [En çok sıçrayan kategori] experienced the most dramatic growth, overtaking [Geçtiği kategori].',
+    exampleEN:
+      'Overall, housing and utilities commanded by far the largest share of household budgets throughout the twenty-year period, whereas spending on food, transport, and print media contracted. Notably, digital communications experienced the most dramatic proportional expansion, effectively reversing its initial rank with print media.',
+    exampleTR:
+      'Genel olarak, konut ve faturalar yirmi yıllık dönem boyunca hane bütçelerinde açık ara en büyük payı alırken; gıda, ulaşım ve basılı medya harcamaları azalmıştır. Dikkat çekici bir şekilde, dijital iletişim oransal olarak en büyük artışı yaşamış ve basılı medya ile olan başlangıçtaki sıralamasını tersine çevirmiştir.',
+  },
+  {
+    paragraphNumber: 3,
+    title: '3. Paragraf: 1. Detay Grubu — Büyük Harcamalar (Body Paragraph 1)',
+    sentenceCount: '3 Cümle (~55–60 kelime) · Sayıları Burada Kullan!',
+    whatToDoTR:
+      'Tablodaki en büyük 3 temel harcamayı (Konut, Gıda, Ulaşım) burada anlat. Dikkat: 2015 ara yılını Konut ve Gıda için ATLA (sadece 2005 başlangıç ve 2025 bitişi ver). 2015 yılını sadece Ulaşım için yaz çünkü Ulaşım 2015’te zirve yapıp sonra düşüyor!',
+    whatToDoEN:
+      'Report the 3 big living costs (Housing, Food, Transport) using exact dollar numbers. Remember to multiply by 1,000 ($14,200, NOT $14.2)! Skip 2015 for Housing and Food; only mention 2015 for Transport because it peaked then.',
+    template:
+      'Regarding major living costs, spending on [Kategori 1] rose by [Oran] from $[Başlangıç] in 2005 to $[Bitiş] in 2025. Conversely, outlays on [Kategori 2] fell gradually from $[Başlangıç] to $[Bitiş]. Meanwhile, [Kategori 3] peaked at $[Zirve] in 2015 before dropping to $[Bitiş] by 2025.',
+    exampleEN:
+      'Regarding major living costs, expenditure on housing and utilities surged by just over half from $14,200 in 2005 to a peak of $21,500 in 2025, exceeding the combined total of the remaining four categories in the final year. Conversely, outlays on food and groceries drifted downward from $9,400 to $8,100 over the same span. Transport and travel followed an erratic trajectory, peaking at $8,500 in 2015 before subsiding to $6,200 by 2025.',
+    exampleTR:
+      'Temel yaşam giderlerine bakıldığında, konut ve fatura harcamaları 2005’te 14.200 dolardan yarıdan biraz fazla artarak 2025’te 21.500 dolar ile zirveye ulaşmış ve son yılda diğer dört kategorinin toplamını geçmiştir. Buna karşılık, gıda ve market harcamaları aynı dönemde 9.400 dolardan 8.100 dolara gerilemiştir. Ulaşım ve seyahat ise dalgalı bir seyir izleyerek 2015’te 8.500 dolarla zirve yapmış, ardından 2025’te 6.200 dolara düşmüştür.',
+  },
+  {
+    paragraphNumber: 4,
+    title: '4. Paragraf: 2. Detay Grubu — Küçük Ama Zıt Kategoriler (Body Paragraph 2)',
+    sentenceCount: '3 Cümle (~50–55 kelime) · Katları ("fivefold") ve "Respectively" Kullan!',
+    whatToDoTR:
+      'Tablodaki en küçük 2 kategoriyi (Dijital İletişim ve Basılı Medya) birbiriyle kıyasla. Biri yaklaşık 5 katına çıkarken ("grew nearly fivefold"), diğeri altıda birine ("a mere sixth") düştü. Sonuç paragrafı (Conclusion) YAZMA; Task 1’de 4. paragraftan sonra yazı biter!',
+    whatToDoEN:
+      'Contrast the 2 smallest categories (Digital vs. Print Media). Use "respectively" for their 2005 starting numbers, then contrast Digital’s 5x surge against Print’s 6x collapse. Do NOT write a 5th conclusion paragraph!',
+    template:
+      'In contrast, the two smallest categories moved in opposite directions. In 2005, households spent $[Sayı A] and $[Sayı B] on [Kategori A] and [Kategori B], respectively. By 2025, [Kategori B] grew nearly fivefold to $[Bitiş], whereas [Kategori A] shrank to a mere sixth of its initial level, finishing at $[Bitiş].',
+    exampleEN:
+      'In stark contrast, the two smallest categories exhibited opposing fortunes. In 2005, households spent $1,800 and $1,200 on print media and digital telecoms, respectively. Over the subsequent two decades, digital spending grew nearly fivefold to reach $5,800, whereas print media expenditure collapsed to a mere sixth of its original level, finishing at a negligible $300.',
+    exampleTR:
+      'Tam aksine, en küçük iki kategori zıt yönlerde ilerlemiştir. 2005 yılında haneler basılı medya ve dijital iletişime sırasıyla 1.800 dolar ve 1.200 dolar harcamıştır. İzleyen yirmi yılda dijital harcamalar yaklaşık beş kat artarak 5.800 dolara ulaşırken, basılı medya harcamaları başlangıç seviyesinin altıda birine çökerek sadece 300 dolarda kalmıştır.',
+  },
+];
 
 export const PRIMARY_TABLE_DATASET = {
   id: 'household-expenditure-2005-2025',
@@ -8,14 +72,18 @@ export const PRIMARY_TABLE_DATASET = {
   minWords: 150,
   promptRubric:
     'The table below gives information about average annual household expenditure on five categories of goods and services in a European country in 2005, 2015, and 2025.',
+  promptRubricTR:
+    'Aşağıdaki tablo, bir Avrupa ülkesinde 2005, 2015 ve 2025 yıllarında beş mal ve hizmet kategorisi için yapılan ortalama yıllık hane halkı harcamaları hakkında bilgi vermektedir.',
   taskInstruction:
     'Summarise the information by selecting and reporting the main features, and make comparisons where relevant.',
+  taskInstructionTR:
+    'Ana özellikleri seçip raporlayarak bilgileri özetleyin ve uygun olan yerlerde karşılaştırmalar yapın. (Hedef: 20 Dakika, En az 150 Kelime, 4 Paragraf)',
   tableTitle: 'Average Annual Household Expenditure by Category (2005–2025)',
-  unitHeader: '(in US$ thousands per household)',
+  unitHeader: '(in US$ thousands per household) — (Hane başına BİN ABD Doları cinsinden)',
   unitMultiplierNote:
-    'CRITICAL MULTIPLIER: Every cell value must be multiplied by 1,000 when reported as a raw dollar figure (e.g., 14.2 = $14,200, NOT $14.20; 0.3 = $300).',
+    'ÇOK ÖNEMLİ BİRİM KURALI: Tablonun başlığında "(in US$ thousands)" yani "bin dolar" yazıyor. Bu yüzden tablodaki "14.2" sayısı aslında $14.2 değil, $14,200 (14 bin 200 dolar) demektir! "0.3" ise $300 demektir. Sınavda "$14.2" yazarsanız puanınız kırılır.',
   columns: [
-    { key: 'category', label: 'Expenditure Category', align: 'left' },
+    { key: 'category', label: 'Expenditure Category (Kategori)', align: 'left' },
     { key: 'y2005', label: '2005', align: 'right' },
     { key: 'y2015', label: '2015', align: 'right' },
     { key: 'y2025', label: '2025', align: 'right' },
@@ -24,192 +92,197 @@ export const PRIMARY_TABLE_DATASET = {
     {
       id: 'housing',
       category: 'Housing & Utilities',
+      categoryTR: 'Konut ve Faturalar',
       recommendedGroup: 'bp1',
       groupRationale:
-        'Cluster in Body Paragraph 1 (High-Outlay Core Staples): Commands the largest share of household budgets across all three decades and records the highest absolute dollar growth (+$7,300).',
-      trajectorySummary: 'Dominant category; continuous upward trajectory (+51%)',
+        '3. Paragrafa (Body 1 - Büyük Harcamalar) koymalıyız: Çünkü tüm yıllarda açık ara en büyük harcama kalemi budur ve dolar bazında en çok artan (+7.300$) kategoridir.',
+      trajectorySummary: 'En büyük kategori; sürekli artış (+51% | +$7,300)',
       cells: {
         y2005: {
           value: '14.2',
           trueDollarValue: '$14,200',
           status: 'must_report',
-          featureType: 'Baseline Leader',
+          featureType: 'Başlangıç Lideri',
           ruleId: 'extremes',
           rationale:
-            'Must Report (Key Feature): Establishes Housing as the dominant expenditure from the outset ($14,200) and anchors the +$7,300 surge to 2025.',
+            'MUTLAKA YAZ (Ana Veri): Konut harcamasının en baştan beri 14.200$ ile birinci sırada olduğunu ve 2025’e kadar 7.300$ arttığını göstermek için başlangıç sayısını vermeliyiz.',
         },
         y2015: {
           value: '16.8',
           trueDollarValue: '$16,800',
           status: 'omit',
-          featureType: 'Linear Midpoint',
+          featureType: 'Gereksiz Ara Yıl',
           ruleId: 'noise',
           rationale:
-            'Omit (Data Noise): Unremarkable intermediate step in a monotonic upward trend. Reporting 2005 ($14,200) and 2025 ($21,500) with "climbed steadily" captures the trend without listing.',
+            'ATLA / YAZMA (Gereksiz Detay): Konut harcaması 2005’ten 2025’e düzenli olarak artıyor. "2005’te 14.200$’dan 2025’te 21.500$’a düzenli yükseldi" demek yeterlidir. 2015’i de yazarsan liste yapmış olursun.',
         },
         y2025: {
           value: '21.5',
           trueDollarValue: '$21,500',
           status: 'must_report',
-          featureType: 'Global Peak',
+          featureType: 'Tablo Zirvesi (En Yüksek)',
           ruleId: 'extremes',
           rationale:
-            'Must Report (Key Feature): The highest single figure in the entire matrix ($21,500), exceeding the next three categories combined by 2025.',
+            'MUTLAKA YAZ (Ana Veri): Tüm tablodaki EN BÜYÜK sayıdır (21.500$). Hatta 2025’te diğer 4 kategorinin toplamından (20.400$) bile daha büyüktür!',
         },
       },
     },
     {
       id: 'food',
       category: 'Food & Groceries',
+      categoryTR: 'Gıda ve Market',
       recommendedGroup: 'bp1',
       groupRationale:
-        'Cluster in Body Paragraph 1 (High-Outlay Core Staples): Remains the second-largest household cost throughout the 20-year span despite a modest, steady contraction.',
-      trajectorySummary: 'Second-ranked staple; gentle downward drift (-14%)',
+        '3. Paragrafa (Body 1 - Büyük Harcamalar) koymalıyız: Hafifçe azalsa bile 20 yıl boyunca her zaman tablodaki en büyük 2. harcama kalemidir.',
+      trajectorySummary: 'En büyük 2. harcama; hafif düşüş (-14% | -$1,300)',
       cells: {
         y2005: {
           value: '9.4',
           trueDollarValue: '$9,400',
           status: 'supporting',
-          featureType: 'Secondary Anchor',
+          featureType: 'Yardımcı Başlangıç',
           ruleId: 'shift',
           rationale:
-            'Supporting Context: Useful benchmark showing Food started as the clear runner-up at $9,400 before edging downward.',
+            'YARDIMCI VERİ: Gıdanın 9.400$ ile ikinci sırada başladığını göstermek için kullanılır ("from $9,400 to $8,100").',
         },
         y2015: {
           value: '8.9',
           trueDollarValue: '$8,900',
           status: 'omit',
-          featureType: 'Linear Midpoint',
+          featureType: 'Gereksiz Ara Yıl',
           ruleId: 'noise',
           rationale:
-            'Omit (Data Noise): Classic Band 5 trap. Citing 9.4, then 8.9, then 8.1 is mechanical chronological listing.',
+            'ATLA / YAZMA (Klasik 5.5 Puan Tuzağı): "2005’te 9.4, 2015’te 8.9, 2025’te 8.1 oldu" şeklinde her yılı tek tek saymak mekanik listelemedir ve puan kırar.',
         },
         y2025: {
           value: '8.1',
           trueDollarValue: '$8,100',
           status: 'supporting',
-          featureType: 'Terminal Context',
+          featureType: 'Yardımcı Bitiş',
           ruleId: 'shift',
           rationale:
-            'Supporting Context: Pairs with 2005 ($9,400) to illustrate a mild contraction to $8,100 while retaining second place.',
+            'YARDIMCI VERİ: 2005 (9.400$) ile birleştirilerek "9.400$’dan 8.100$’a hafifçe geriledi" cümlesini kurmamızı sağlar.',
         },
       },
     },
     {
       id: 'transport',
       category: 'Transport & Travel',
+      categoryTR: 'Ulaşım ve Seyahat',
       recommendedGroup: 'bp1',
       groupRationale:
-        'Cluster in Body Paragraph 1 (High-Outlay Core Staples): Mid-to-high budget item that shares large-scale dollar framing with Housing and Food, while exhibiting the table’s sole non-linear inflection point.',
-      trajectorySummary: 'Non-linear anomaly: peaked in 2015 before falling below baseline',
+        '3. Paragrafa (Body 1 - Büyük Harcamalar) koymalıyız: Büyük bütçeli üçüncü kalemdir ve tablodaki TEK dalgalı (önce artıp sonra düşen) kategoridir.',
+      trajectorySummary: 'İstisna (Anomaly): 2015’te zirve yapıp sonra düştü',
       cells: {
         y2005: {
           value: '7.6',
           trueDollarValue: '$7,600',
           status: 'supporting',
-          featureType: 'Anomaly Baseline',
+          featureType: 'Başlangıç Referansı',
           ruleId: 'anomaly',
           rationale:
-            'Supporting Context: Provides the initial $7,600 reference point needed to show that 2025 spending ($6,200) ended lower than it began.',
+            'YARDIMCI VERİ: 2025 son değerinin (6.200$), 2005 başlangıç değerinin (7.600$) bile altına düştüğünü göstermek için faydalıdır.',
         },
         y2015: {
           value: '8.5',
           trueDollarValue: '$8,500',
           status: 'must_report',
-          featureType: 'Mid-Period Anomaly Peak',
+          featureType: '2015 İstisna Zirvesi!',
           ruleId: 'anomaly',
           rationale:
-            'Must Report (Key Feature): Standout Anomaly. Transport is the ONLY category in the table that reverses direction in 2015 (peaking at $8,500 before dropping).',
+            'MUTLAKA YAZ (Özel İstisna): Tabloda 2015 yılını yazmamız gereken TEK satır budur! Çünkü sadece Ulaşım 2015’te 8.500$ ile zirve yapıp ardından yön değiştirerek düşmektedir.',
         },
         y2025: {
           value: '6.2',
           trueDollarValue: '$6,200',
           status: 'must_report',
-          featureType: 'Post-Peak Contraction',
+          featureType: 'Zirve Sonrası Düşüş',
           ruleId: 'anomaly',
           rationale:
-            'Must Report (Key Feature): Completes the non-linear arc, falling to $6,200 (nearly overtaken by Digital & Telecoms).',
+            'MUTLAKA YAZ (Ana Veri): 2015 zirvesinden (8.500$) sonra 6.200$’a düştüğünü tamamlar.',
         },
       },
     },
     {
       id: 'digital',
       category: 'Digital & Telecoms',
+      categoryTR: 'Dijital ve İletişim',
       recommendedGroup: 'bp2',
       groupRationale:
-        'Cluster in Body Paragraph 2 (Low-Base Divergent Sectors): Pairs directly with Print Media as a structural technological substitution story (started lowest, surged nearly fivefold).',
-      trajectorySummary: 'Largest proportional surge: nearly fivefold increase (+383%)',
+        '4. Paragrafa (Body 2 - Küçük Ama Zıt Kategoriler) koymalıyız: Basılı Medya ile tam zıt bir teknoloji hikayesi oluşturur (en düşük başladı ama yaklaşık 5 katına çıktı!).',
+      trajectorySummary: 'Oransal olarak en büyük sıçrama: ~5 kat artış (+383%)',
       cells: {
         y2005: {
           value: '1.2',
           trueDollarValue: '$1,200',
           status: 'must_report',
-          featureType: 'Surge Baseline',
+          featureType: 'Sıçrama Başlangıcı',
           ruleId: 'shift',
           rationale:
-            'Must Report (Key Feature): Starting at just $1,200 (the lowest figure in 2005), this number is essential to prove the nearly fivefold proportional surge.',
+            'MUTLAKA YAZ (Ana Veri): 2005’te 1.200$ ile en küçük kategoriydi; 5 katlık artışı ("nearly fivefold") kanıtlamak için bu başlangıç sayısı şarttır.',
         },
         y2015: {
           value: '2.9',
           trueDollarValue: '$2,900',
           status: 'omit',
-          featureType: 'Linear Midpoint',
+          featureType: 'Gereksiz Ara Yıl',
           ruleId: 'noise',
           rationale:
-            'Omit (Data Noise): Unnecessary midpoint. A Band 8+ writer synthesizes 1.2 → 5.8 as "surged almost fivefold from $1,200 to $5,800".',
+            'ATLA / YAZMA: "1.200$’dan yaklaşık beş kat artarak 5.800$’a çıktı" dediğimizde 2015’teki 2.900$’ı söylemeye hiç gerek kalmaz.',
         },
         y2025: {
           value: '5.8',
           trueDollarValue: '$5,800',
           status: 'must_report',
-          featureType: 'Proportional Surge Peak',
+          featureType: '5 Kat Sıçrama Sonucu',
           ruleId: 'shift',
           rationale:
-            'Must Report (Key Feature): Reaches $5,800—an almost fivefold expansion that brings it within $400 of Transport spending.',
+            'MUTLAKA YAZ (Ana Veri): 5.800$’a ulaşarak neredeyse 5 kat büyüdüğünü ve Basılı Medya’yı geride bıraktığını gösterir.',
         },
       },
     },
     {
       id: 'print',
       category: 'Print Media & Postage',
+      categoryTR: 'Basılı Medya ve Posta',
       recommendedGroup: 'bp2',
       groupRationale:
-        'Cluster in Body Paragraph 2 (Low-Base Divergent Sectors): Direct inverse counterpart to Digital & Telecoms; started above Digital in 2005 ($1,800 vs. $1,200) before collapsing to a negligible $300.',
-      trajectorySummary: 'Sharpest proportional collapse: shrank by five-sixths (-83%)',
+        '4. Paragrafa (Body 2 - Küçük Ama Zıt Kategoriler) koymalıyız: Dijital İletişim’in tam tersidir; 2005’te Dijital’den büyüktü (1.800$ vs 1.200$), ama 2025’te 300$’a çöktü.',
+      trajectorySummary: 'En sert çöküş: Altıda birine düştü (-83% | $300)',
       cells: {
         y2005: {
           value: '1.8',
           trueDollarValue: '$1,800',
           status: 'supporting',
-          featureType: 'Rank-Reversal Anchor',
+          featureType: 'Sıralama Değişimi Başlangıcı',
           ruleId: 'shift',
           rationale:
-            'Supporting Context: Highlights the rank reversal with Digital & Telecoms ($1,800 vs. $1,200 in 2005) and anchors the sixfold collapse.',
+            'YARDIMCI VERİ: 2005 yılında Basılı Medya’nın (1.800$), Dijital’den (1.200$) daha yüksek olduğunu ve sonradan altıda birine düştüğünü göstermek için kullanılır.',
         },
         y2015: {
           value: '0.9',
           trueDollarValue: '$900',
           status: 'omit',
-          featureType: 'Linear Midpoint',
+          featureType: 'Gereksiz Ara Yıl',
           ruleId: 'noise',
           rationale:
-            'Omit (Data Noise): Exact halving midpoint ($900). Omit to keep total cited figures within the 6–8 Band 8+ sweet spot.',
+            'ATLA / YAZMA: Ara yıldaki 900$ değerini atlayarak toplam sayı adedini ideal sınırda (7-8 sayı) tutuyoruz.',
         },
         y2025: {
           value: '0.3',
           trueDollarValue: '$300',
           status: 'must_report',
-          featureType: 'Global Trough',
+          featureType: 'Tablo Dibi (En Düşük)',
           ruleId: 'extremes',
           rationale:
-            'Must Report (Key Feature): Global Trough across all 15 cells ($300, or one-sixth of its 2005 level). Note the unit conversion: 0.3 thousand = $300.',
+            'MUTLAKA YAZ (Ana Veri): Tablodaki EN DÜŞÜK sayıdır! Dikkat: "0.3 bin dolar" = "$300" (300 dolar) olarak yazmak 8.5 puanlık ustalık gösterir.',
         },
       },
     },
   ],
 };
 
-// Static Snapshot comparison table used in Module 1, Module 2 (Static Mode toggle), and Module 7
+// Static Snapshot comparison table used in Module 1, Module 2 (Static Mode toggle), and Module 10
 export const STATIC_SNAPSHOT_DATASET = {
   id: 'commuter-modal-split-2024',
   type: 'static',
@@ -217,19 +290,21 @@ export const STATIC_SNAPSHOT_DATASET = {
   minWords: 150,
   promptRubric:
     'The table below shows the percentage of commuters using four modes of transport in five metropolitan cities in 2024, along with average daily commute time.',
+  promptRubricTR:
+    'Aşağıdaki tablo, 2024 yılında beş büyükşehirde dört ulaşım türünü kullanan yolcuların yüzdesini ve ortalama günlük yolculuk süresini göstermektedir.',
   taskInstruction:
     'Summarise the information by selecting and reporting the main features, and make comparisons where relevant.',
   tableTitle: 'Metropolitan Commuter Transport Share & Duration (2024 Census Snapshot)',
-  unitHeader: '(Modal columns in % of workforce; final column in minutes)',
+  unitHeader: '(İlk 4 sütun % oran; son sütun dakika [minutes] cinsindendir)',
   unitMultiplierNote:
-    'STATIC SNAPSHOT + DUAL UNIT TRAP: First four data columns are percentages (%); the final column is raw minutes. Never apply dynamic trend verbs (rose, fell, peaked) to compare cities.',
+    'SABİT (STATIC) TABLO KURALI: Bu tabloda yıllar arası değişim YOKTUR (sadece 2024 yılı var). Bu yüzden ASLA "arttı (rose/increased)" veya "azaldı (fell/decreased)" kelimelerini kullanmayın! Şehirleri "daha yüksek (higher than)", "en büyük pay (the largest share)" diyerek karşılaştırın.',
   columns: [
-    { key: 'city', label: 'City', align: 'left' },
+    { key: 'city', label: 'City (Şehir)', align: 'left' },
     { key: 'rail', label: 'Metro / Rail (%)', align: 'right' },
     { key: 'car', label: 'Private Car (%)', align: 'right' },
     { key: 'bus', label: 'Bus (%)', align: 'right' },
     { key: 'active', label: 'Cycling / Walking (%)', align: 'right' },
-    { key: 'duration', label: 'Avg. Commute (mins)', align: 'right' },
+    { key: 'duration', label: 'Avg. Commute (dk)', align: 'right' },
   ],
   rows: [
     {
@@ -240,7 +315,7 @@ export const STATIC_SNAPSHOT_DATASET = {
       bus: '8',
       active: '17',
       duration: '48',
-      highlightNote: 'Global Rail peak (64%) & lowest Car reliance (11%), yet longest duration (48 mins).',
+      highlightNote: 'Metro lideri (%64) ve en düşük araba kullanımı (%11), ancak en uzun yolculuk süresi (48 dk).',
     },
     {
       id: 'amsterdam',
@@ -250,7 +325,7 @@ export const STATIC_SNAPSHOT_DATASET = {
       bus: '9',
       active: '46',
       duration: '26',
-      highlightNote: 'Outlier in Cycling/Walking (46% — nearly half of commuters) & shortest duration (26 mins).',
+      highlightNote: 'Bisiklet/Yürüyüşte açık ara lider (%46 — neredeyse yarısı) ve en kısa yolculuk süresi (26 dk).',
     },
     {
       id: 'london',
@@ -260,7 +335,7 @@ export const STATIC_SNAPSHOT_DATASET = {
       bus: '18',
       active: '11',
       duration: '43',
-      highlightNote: 'Second-highest Rail share (49%) and highest Bus usage (18%).',
+      highlightNote: 'Metroda 2. sırada (%49) ve en yüksek otobüs kullanımı (%18).',
     },
     {
       id: 'sydney',
@@ -270,7 +345,7 @@ export const STATIC_SNAPSHOT_DATASET = {
       bus: '11',
       active: '6',
       duration: '39',
-      highlightNote: 'Majority car-dependent (58%), with low active transport (6%).',
+      highlightNote: 'Çoğunluk özel arabaya bağımlı (%58), bisiklet/yürüyüş çok düşük (%6).',
     },
     {
       id: 'houston',
@@ -280,7 +355,7 @@ export const STATIC_SNAPSHOT_DATASET = {
       bus: '7',
       active: '4',
       duration: '34',
-      highlightNote: 'Extreme Private Car dominance (86%) and negligible Rail/Active shares (3% and 4%).',
+      highlightNote: 'En yüksek özel araba bağımlılığı (%86) ve en düşük metro/bisiklet oranı (%3 ve %4).',
     },
   ],
 };
@@ -290,12 +365,14 @@ export const MODEL_ESSAY_DATA = {
   targetBand: '8.5',
   wordCount: 174,
   examinerSummary:
-    'This report achieves Band 8.5+ across all four criteria. It cites exactly 8 strategically chosen figures out of 15 (avoiding mechanical midpoint listing), translates the "thousands" unit header accurately ($14,200 and $300), presents a zero-number macro overview, and groups categories analytically into high-value core expenses versus low-value shifting technologies.',
+    'Bu örnek yazı (174 kelime), 4 paragraflık standart şablonu kusursuz uygular: 15 sayıdan sadece en önemli 8 tanesini seçer, "bin dolar" birimini doğru çevirir ($14,200 ve $300), Overview paragrafında hiç sayı kullanmaz ve kategorileri mantıklı şekilde iki gruba ayırır.',
   paragraphs: [
     {
       id: 'p1',
-      label: 'Paragraph 1: Paraphrased Introduction',
-      role: 'Defines dataset scope, category count, and 20-year timeframe without copying prompt phrasing.',
+      label: '1. Paragraf: Giriş (Introduction — 1 Cümle)',
+      role: 'Soru kökünü eş anlamlı kelimelerle yeniden yazar (Paraphrase).',
+      translationTR:
+        'Tablo, bir Avrupa ülkesindeki hanelerin 2005 ve 2025 yılları arasında onar yıllık aralıklarla beş farklı harcama grubuna yıllık ne kadar bütçe ayırdığını karşılaştırmaktadır.',
       segments: [
         {
           text: 'The table compares how much households in a European nation ',
@@ -304,61 +381,65 @@ export const MODEL_ESSAY_DATA = {
         {
           text: 'allocated annually to five distinct expenditure brackets',
           tags: ['LR'],
-          note: 'LR (Band 8.5): Precise nominalization and academic collocation ("allocated annually to five distinct expenditure brackets") paraphrasing "annual household expenditure on five categories".',
+          note: 'Kelime Bilgisi (LR - 8.5): Sorudaki "spent on five categories" ifadesini "allocated annually to five distinct expenditure brackets" (beş farklı harcama grubuna yıllık ayırdığı) şeklinde üst düzey kelimelerle yeniden yazıyor.',
         },
         {
           text: ' at ten-year intervals between 2005 and 2025.',
           tags: ['GRA'],
-          note: 'GRA (Band 8): Concise prepositional time-series framing ("at ten-year intervals between 2005 and 2025").',
+          note: 'Gramer (GRA - 8.0): "2005, 2015, and 2025" demek yerine "at ten-year intervals between 2005 and 2025" (2005 ile 2025 arasında 10’ar yıllık aralıklarla) kalıbını kullanıyor.',
         },
       ],
     },
     {
       id: 'p2',
-      label: 'Paragraph 2: Macro Overview (Zero Raw Numbers)',
-      role: 'Synthesizes dominant category, overall directional split, and sharpest structural divergence.',
+      label: '2. Paragraf: Genel Bakış (Overview — 2 Cümle, SIFIR SAYI!)',
+      role: 'Hiç rakam vermeden en büyük kategoriyi ve en çarpıcı değişimi özetler.',
+      translationTR:
+        'Genel olarak, konut ve faturalar yirmi yıllık dönem boyunca hane bütçelerinde açık ara en büyük payı alırken; gıda, ulaşım ve basılı medya harcamaları daralmıştır. Dikkat çekici bir şekilde, dijital iletişim en büyük oransal artışı yaşamış ve basılı medya ile olan başlangıç sıralamasını tersine çevirmiştir.',
       segments: [
         {
           text: 'Overall, ',
           tags: ['CC'],
-          note: 'CC (Band 8+): Unambiguous macro-signposting token initiating the overview paragraph.',
+          note: 'Bağlaç (CC): Overview paragrafına her zaman "Overall," (Genel olarak,) kelimesiyle başlayın.',
         },
         {
           text: 'housing and utilities commanded by far the largest share of household budgets throughout the twenty-year period',
           tags: ['TA', 'LR'],
-          note: 'TA (Band 9) & LR (Band 8.5): Identifies the overarching dominant feature first using idiomatic financial lexis ("commanded by far the largest share") with zero raw numbers.',
+          note: 'Görev Başarısı (TA - 9.0): Hiç sayı yazmadan tablonun en büyük liderini ("commanded by far the largest share" = açık ara en büyük payı aldı) söylüyor.',
         },
         {
           text: ', whereas ',
           tags: ['CC', 'GRA'],
-          note: 'CC / GRA: Subordinating contrastive conjunction linking the dominant leader to the secondary macro-trend.',
+          note: 'Gramer / Bağlaç: İki zıt durumu tek cümlede birleştiren ", whereas" (-iken / buna karşın) bağlacı.',
         },
         {
           text: 'spending on food, transport, and print media contracted. ',
           tags: ['TA'],
-          note: 'TA (Band 8.5): Synthesizes three declining categories into a single macro-observation.',
+          note: 'Görev Başarısı (TA): Azalan üç kategoriyi tek bir kelimede ("contracted" = daraldı/azaldı) birleştiriyor.',
         },
         {
           text: 'Notably, ',
           tags: ['CC'],
-          note: 'CC (Band 8.5): High-register discourse marker highlighting the primary structural divergence.',
+          note: 'Bağlaç (CC): İkinci genel bakış cümlesinde en dikkat çekici özelliği vurgulamak için "Notably," (Dikkat çekici bir şekilde,) kullanılır.',
         },
         {
           text: 'digital communications experienced the most dramatic proportional expansion, effectively reversing its initial rank with print media.',
           tags: ['TA', 'GRA'],
-          note: 'TA / GRA (Band 8.5): Captures the standout proportional shift and rank reversal using a non-finite participle clause ("effectively reversing...").',
+          note: 'TA & GRA (8.5): Dijital harcamaların oransal olarak en büyük sıçramayı yaptığını ve basılı medya ile yer değiştirdiğini (", effectively reversing...") yapısıyla anlatıyor.',
         },
       ],
     },
     {
       id: 'p3',
-      label: 'Paragraph 3: Body 1 — High-Outlay Core Staples & Anomaly',
-      role: 'Clusters the three major budget items (Housing, Food, Transport), contrasting steady trends against the 2015 anomaly.',
+      label: '3. Paragraf: Detay 1 — Büyük Yaşam Giderleri (Body Paragraph 1)',
+      role: 'Konut, Gıda ve Ulaşım kategorilerini sayı vererek karşılaştırır.',
+      translationTR:
+        'Temel yaşam giderlerine bakıldığında, konut ve fatura harcamaları 2005’te 14.200 dolardan yarıdan biraz fazla artarak 2025’te 21.500 dolarla zirveye ulaşmış ve son yılda kalan dört kategorinin toplamını aşmıştır. Buna karşılık, gıda harcamaları aynı dönemde 9.400 dolardan 8.100 dolara gerilemiştir. Ulaşım ise dalgalı bir seyir izleyerek 2015’te 8.500 dolarla zirve yapmış, ardından 2025’te 6.200 dolara düşmüştür.',
       segments: [
         {
           text: 'Regarding major living costs, ',
           tags: ['CC'],
-          note: 'CC (Band 8.5): Thematic topic-framing phrase that signals analytical grouping rather than row-by-row listing.',
+          note: 'Paragraf Başlangıcı (CC): 3. paragrafa hangi grubu anlatacağımızı belirterek ("Regarding major living costs," = Temel yaşam giderlerine bakıldığında,) başlıyoruz.',
         },
         {
           text: 'expenditure on housing and utilities ',
@@ -367,76 +448,78 @@ export const MODEL_ESSAY_DATA = {
         {
           text: 'surged by just over half from $14,200 in 2005 to a peak of $21,500 in 2025',
           tags: ['TA', 'LR', 'GRA'],
-          note: 'TA / LR / GRA: Converts "14.2" and "21.5" accurately using the thousands multiplier ($14,200 / $21,500), omits the redundant 2015 midpoint (16.8), and integrates a proportional fraction ("by just over half").',
+          note: 'Birim ve Kesir Ustalığı (TA/LR): "14.2" ve "21.5" sayılarını bin ile çarparak "$14,200" ve "$21,500" olarak doğru yazıyor; aradaki %51’lik artışı "by just over half" (yarıdan biraz fazla) diyerek ifade ediyor ve 2015 ara yılını atlıyor!',
         },
         {
           text: ', exceeding the combined total of the remaining four categories in the final year. ',
           tags: ['TA', 'GRA'],
-          note: 'TA / GRA (Band 9): Participial relative clause demonstrating genuine mathematical synthesis across the table.',
+          note: 'Üst Düzey Karşılaştırma (Band 9): 21.500 doların diğer dört kategorinin toplamından bile büyük olduğunu (", exceeding...") yapısı ile ekliyor.',
         },
         {
           text: 'Conversely, ',
           tags: ['CC'],
-          note: 'CC: Crisp transition into declining major staples.',
+          note: 'Bağlaç: Artan konuttan azalan gıdaya geçerken "Conversely," (Buna karşılık,) kullanılıyor.',
         },
         {
           text: 'outlays on food and groceries drifted downward from $9,400 to $8,100 over the same span. ',
           tags: ['TA', 'LR'],
-          note: 'TA / LR: "Outlays... drifted downward" avoids repeating "expenditure/spending fell"; omits the 2015 midpoint ($8.9k).',
+          note: 'Kelime Çeşitliliği (LR): Sürekli "spending fell" dememek için "outlays ... drifted downward" (harcamalar aşağı yönlü geriledi) kullanılıyor.',
         },
         {
           text: 'Transport and travel followed an erratic trajectory, peaking at $8,500 in 2015 before subsiding to $6,200 by 2025.',
           tags: ['TA', 'LR', 'GRA'],
-          note: 'TA / GRA (Band 8.5): Isolates the table’s sole non-linear anomaly (2015 peak of $8,500) using a participle time clause ("peaking at... before subsiding to...").',
+          note: '2015 İstisnası (TA/GRA): Tablodaki tek dalgalı satır olan Ulaşım için 2015 zirvesini ("peaking at $8,500 in 2015 before subsiding to $6,200") kalıbıyla veriyor.',
         },
       ],
     },
     {
       id: 'p4',
-      label: 'Paragraph 4: Body 2 — Low-Outlay Divergent Sectors (Tech vs. Print)',
-      role: 'Contrasts the two smallest categories via multiples, fractions, and "respectively".',
+      label: '4. Paragraf: Detay 2 — Küçük Ama Zıt Kategoriler (Body Paragraph 2)',
+      role: 'Dijital İletişim ve Basılı Medya’yı "respectively", katlar ve kesirlerle kıyaslar.',
+      translationTR:
+        'Tam aksine, en küçük iki kategori zıt yönlerde ilerlemiştir. 2005 yılında haneler basılı medya ve dijital iletişime sırasıyla 1.800 dolar ve 1.200 dolar harcamıştır. İzleyen yirmi yılda dijital harcamalar yaklaşık beş kat büyüyerek 5.800 dolara ulaşırken, basılı medya harcamaları başlangıç seviyesinin altıda birine çökerek sadece 300 dolarda kalmıştır.',
       segments: [
         {
           text: 'In stark contrast, ',
           tags: ['CC'],
-          note: 'CC (Band 8+): Signals shift from high-volume staples to small-scale divergent categories.',
+          note: 'Bağlaç (CC): 4. paragrafa güçlü bir geçiş ("In stark contrast," = Tam aksine / Keskin bir tezatla) ile başlanıyor.',
         },
         {
           text: 'the two smallest categories exhibited opposing fortunes. ',
           tags: ['CC', 'LR'],
-          note: 'CC / LR: Concise topic sentence anchoring Body Paragraph 2.',
+          note: 'Konu Cümlesi: En küçük iki kategorinin zıt yönlere gittiğini belirterek paragrafı çerçeveliyor.',
         },
         {
           text: 'In 2005, households spent $1,800 and $1,200 on print media and digital telecoms, respectively. ',
           tags: ['TA', 'GRA'],
-          note: 'GRA (Band 8.5): Flawless execution of the "respectively" rule—strict 1-to-1 parallel alignment ($1,800 → print media; $1,200 → digital telecoms) set off by a comma.',
+          note: '"Respectively" Kalıbı (GRA - 8.5): "Sırasıyla" demektir. İlk sayı ($1,800) ilk kategoriye (print media), ikinci sayı ($1,200) ikinci kategoriye (digital telecoms) aittir.',
         },
         {
           text: 'Over the subsequent two decades, ',
           tags: ['CC'],
-          note: 'CC: Cohesive temporal progression marker.',
+          note: 'Zaman Bağlacı: "İzleyen yirmi yıl boyunca" anlamında akıcı geçiş.',
         },
         {
           text: 'digital spending grew nearly fivefold to reach $5,800',
           tags: ['TA', 'GRA'],
-          note: 'TA / GRA (Band 8.5): Uses an adverbial scale multiple ("grew nearly fivefold") paired with the terminal figure ($5,800).',
+          note: 'Kat Kalıbı (GRA): 1.200$’dan 5.800$’a çıkışı "grew nearly fivefold" (yaklaşık 5 kat büyüdü) diyerek anlatıyor.',
         },
         {
-          text: ', whereas print media expenditure collapsed to a mere sixth of its original level, finishing at an negligible $300.',
+          text: ', whereas print media expenditure collapsed to a mere sixth of its original level, finishing at a negligible $300.',
           tags: ['TA', 'LR', 'GRA'],
-          note: 'TA / LR / GRA (Band 9): Combines contrastive "whereas", proportional fraction ("a mere sixth"), and accurate decimal-to-hundreds conversion ("0.3 thousand" = "$300").',
+          note: 'Kesir ve Birim Dönüşümü (Band 9): 1.800$’dan 300$’a düşüşü "collapsed to a mere sixth" (altıda birine çöktü) ve "0.3 bin = $300" olarak hatasız tamamlıyor.',
         },
       ],
     },
   ],
 };
 
-// Module 9: Band 5.5 Error Clinic Script (8 clickable examiner penalty tokens)
+// Module 9: Band 5.5 Error Clinic Script
 export const ERROR_CLINIC_DATA = {
   candidateBand: '5.5',
   wordCount: 142,
   examinerVerdict:
-    'This script exhibits all five classic table-reporting breakdowns: raw figures dumped into the overview, omission of the "(in thousands)" multiplier ($14.2 instead of $14,200), subject-category confusion ("Housing and utilities increased"), mechanical row-by-row listing of all 2015 midpoints, and a broken "respectively" structure.',
+    'Bu 5.5 puanlık öğrenci yazısında Türk öğrencilerin en sık yaptığı 7 klasik hata bulunuyor: Overview paragrafına sayı doldurmak, "bin dolar" birimini unutmak ($14.2 yazmak), her yılı tek tek sıralamak ve "respectively" sırasını karıştırmak. Kırmızı/altı çizili hatalara tıklayarak neden puan kırıldığını görün.',
   paragraphs: [
     {
       id: 'ep1',
@@ -450,11 +533,11 @@ export const ERROR_CLINIC_DATA = {
           type: 'error',
           id: 'err-overview-numbers',
           criterion: 'TA',
-          shortLabel: 'Raw Data in Overview',
+          shortLabel: 'Hata 1: Overview Paragrafında Sayı Kullanmak',
           flawedText:
             'Overall, Housing was 14.2 in 2005 and went up to 21.5 in 2025, while Print Media was 0.3 in 2025.',
           penaltyExplanation:
-            'Task Achievement Penalty (Caps TA at Band 5/6): An overview must synthesize macro-trends without citing specific cell numbers, dates, or missing-unit decimals. Packing raw figures into the overview blurs the distinction between Overview and Body paragraphs.',
+            'NEDEN PUAN KIRILIR (TA Tavanı 5.5/6.0): Overview (Genel Bakış) paragrafında ASLA sayı (14.2, 21.5, 0.3) ve yıl yazılmaz! Overview sadece "en büyük kategori konuttu, en çok düşen basılı medyaydı" gibi genel özeti vermelidir.',
           calibratedFix:
             'Overall, housing and utilities commanded the largest share of household budgets throughout the period, whereas print media remained the smallest and steepest-declining category.',
         },
@@ -467,10 +550,10 @@ export const ERROR_CLINIC_DATA = {
           type: 'error',
           id: 'err-multiplier-drop',
           criterion: 'TA',
-          shortLabel: 'Dropped Multiplier Trap',
+          shortLabel: 'Hata 2: "Bin Dolar (Thousands)" Birimini Unutmak',
           flawedText: 'First, in 2005, people spent $14.2 on Housing and Utilities,',
           penaltyExplanation:
-            'Task Achievement Penalty (Inaccurate Data Reporting): The table header explicitly states "(in US$ thousands)". Writing "$14.2" reports fourteen dollars and twenty cents instead of $14,200. Examiners penalize systematic failure to read scale headers.',
+            'NEDEN PUAN KIRILIR (Yanlış Veri): Tablonun üstünde "(in US$ thousands)" yani "bin dolar" yazıyor. "$14.2" yazarsanız "14 dolar 20 sent harcadılar" demiş olursunuz! Doğrusu "$14,200" veya "14.2 thousand dollars" olmalıdır.',
           calibratedFix:
             'In 2005, households allocated $14,200 to housing and utilities,',
         },
@@ -482,11 +565,11 @@ export const ERROR_CLINIC_DATA = {
           type: 'error',
           id: 'err-mechanical-listing',
           criterion: 'TA',
-          shortLabel: 'Mechanical Midpoint Listing',
+          shortLabel: 'Hata 3: Tüm Yılları Tek Tek Saymak (Data Dumping)',
           flawedText:
             'then it rose to $16.8 in 2015 and then it increased to $21.5 in 2025. Next, Food and Groceries was $9.4 in 2005, $8.9 in 2015, and $8.1 in 2025.',
           penaltyExplanation:
-            'TA & CC Penalty (Data Dumping / Linear Walk): Reciting every single year (2005 → 2015 → 2025) for linear trends ("then... and then... Next...") is mechanical listing rather than selective synthesis. It caps TA and CC at Band 5/6.',
+            'NEDEN PUAN KIRILIR (TA & CC 5.5): "2005’te şuydu, 2015’te bu oldu, 2025’te şu oldu" diye tablodaki tüm hücreleri sıra ile okumak analiz değildir. 2015 ara yıllarını atlayıp başlangıç ve bitişi karşılaştırmalısınız.',
           calibratedFix:
             'which climbed steadily by over 50% to reach $21,500 by 2025. Conversely, food expenditure drifted downward from $9,400 to $8,100 over the twenty-year span.',
         },
@@ -499,10 +582,10 @@ export const ERROR_CLINIC_DATA = {
           type: 'error',
           id: 'err-subject-confusion',
           criterion: 'LR',
-          shortLabel: 'Illogical Subject-Verb Collocation',
+          shortLabel: 'Hata 4: Yanlış Özne ("Ulaşım Arttı" Demek)',
           flawedText: 'Moving to the third row, Transport and Travel increased to 8.5 in 2015',
           penaltyExplanation:
-            'Lexical Resource & CC Penalty: First, "Moving to the third row" exposes mechanical table navigation. Second, "Transport and Travel" did not increase—household *expenditure on* transport increased. Treating category labels as physical subjects is a classic Band 6 ceiling error.',
+            'NEDEN PUAN KIRILIR (Kelime & Mantık Hatası): Birincisi, "Üçüncü satıra geçersek (Moving to the third row)" denmez. İkincisi, "Ulaşım (Transport)" kendi başına artmaz; "ulaşıma yapılan harcama (spending on transport)" artar!',
           calibratedFix:
             'Meanwhile, spending on transport bucked the general downward trend among secondary staples, peaking at $8,500 in 2015',
         },
@@ -514,10 +597,10 @@ export const ERROR_CLINIC_DATA = {
           type: 'error',
           id: 'err-comparative-syntax',
           criterion: 'GRA',
-          shortLabel: 'Faulty Multiple Comparison',
+          shortLabel: 'Hata 5: Bozuk Karşılaştırma Grameri',
           flawedText: 'Also, Digital and Telecoms was almost five times higher than 2005 in 2025, from 1.2 to 5.8.',
           penaltyExplanation:
-            'Grammatical Range & Accuracy Penalty (Faulty Comparison): Comparing a category ("Digital and Telecoms") directly to a year ("higher than 2005") is grammatically elliptical and inaccurate. You must compare the 2025 figure to *that of 2005* or use an adverbial multiplier ("grew nearly fivefold").',
+            'NEDEN PUAN KIRILIR (Gramer): "Digital was higher than 2005" derseniz bir harcama kategorisini bir takvim yılıyla (2005) kıyaslamış olursunuz. Doğrusu: "grew nearly fivefold from $1,200 in 2005 to $5,800 in 2025".',
           calibratedFix:
             'By contrast, outlays on digital communications surged nearly fivefold from $1,200 in 2005 to $5,800 in 2025.',
         },
@@ -530,10 +613,10 @@ export const ERROR_CLINIC_DATA = {
           type: 'error',
           id: 'err-static-verb-confusion',
           criterion: 'LR',
-          shortLabel: 'Repetitive / Imprecise Lexis',
+          shortLabel: 'Hata 6: Günlük/Basit Kelime ("Went down a lot")',
           flawedText: 'Finally, Print Media went down a lot from 1.8 in 2005 to 0.9 in 2015 and 0.3 in 2025.',
           penaltyExplanation:
-            'Lexical Resource Penalty (Informal Quantifier + Listing): "Went down a lot" is conversational Band 5 vocabulary, and reciting 1.8 → 0.9 → 0.3 adds three more unanalyzed numbers (bringing the essay total to 14 out of 15 cells!).',
+            'NEDEN PUAN KIRILIR (Kelime Bilgisi - Band 5): Akademik yazıda "went down a lot" (çok düştü) gibi konuşma dili kullanılmaz. Ayrıca yine 1.8 → 0.9 → 0.3 diye tüm sayılar tek tek sayılmış.',
           calibratedFix:
             'Over the same period, spending on print media collapsed to just one-sixth of its initial level, dropping from $1,800 to a negligible $300.',
         },
@@ -545,11 +628,11 @@ export const ERROR_CLINIC_DATA = {
           type: 'error',
           id: 'err-respectively-syntax',
           criterion: 'GRA',
-          shortLabel: 'Broken "Respectively" Alignment',
+          shortLabel: 'Hata 7: "Respectively" Sırasını Ters Yazmak',
           flawedText:
             'In 2025, Digital and Print Media were 0.3 and 5.8 respectively.',
           penaltyExplanation:
-            'GRA & TA Penalty (Inverted "Respectively" Order): "Digital and Print Media" lists Digital first and Print second, so "0.3 and 5.8 respectively" falsely assigns 0.3 to Digital and 5.8 to Print! Furthermore, the comma before "respectively" is missing.',
+            'NEDEN PUAN KIRILIR (Gramer & Yanlış Bilgi): Cümlede önce "Digital", sonra "Print Media" yazılmış; ama sayılarda önce Print Media’nın sayısı (0.3), sonra Digital’in sayısı (5.8) verilmiş! "Respectively" kullanırken sıra birebir aynı olmalıdır.',
           calibratedFix:
             'By 2025, expenditure on digital services and print media stood at $5,800 and $300, respectively.',
         },
